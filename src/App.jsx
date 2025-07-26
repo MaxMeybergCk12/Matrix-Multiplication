@@ -1,11 +1,11 @@
 import React from 'react';
-import { DistributiveProperty } from './distributive-property/DistributiveProperty';
+import Template from './template/Template.jsx';
 
 function App() {
   return (
-      <div className="App">
-        <DistributiveProperty />
-      </div>
+    <Template title="Distributive Property"> {/*CHANGE TITLE HERE*/}
+      
+    </Template>
   );
 }
 
