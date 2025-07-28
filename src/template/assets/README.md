@@ -1,1 +1,1 @@
-These are the svgs for flexi, will be used for templates
+This is the naming convention to use the Flexi Assets easily
