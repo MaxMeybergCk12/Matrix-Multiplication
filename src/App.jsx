@@ -13,16 +13,16 @@ function App() {
   // 🟢 MODIFY THE SECTION BELOW THIS LINE
   // ==========================================
   
-  const total_steps = 4; // Change me, How many Steps do you want?
-  const project_title = "Math Example"; // MODIFY THIS FOR YOUR PROJECT
+  const total_steps = 5; // Change me, How many Steps do you want?
+  const project_title = "Distribtive Proeprty"; // MODIFY THIS FOR YOUR PROJECT
   
   const flexi_steps = [
-    { pose: Flexi.confident, message: "Welcome to the Template" },
+    { pose: Flexi.excited, message: "Welcome to the Template" },
     { pose: Flexi.teacher, message: "Search for my text and modify what I say" },
     { pose: Flexi.thumbs_up, message: "You can also change my poses" },
+    { pose: Flexi.pointing, message: "I have an extra slide" },
     { pose: Flexi.pointing, message: "I have an extra slide" }
   ];
-
 
   // ==========================================
   // 🟢 MODIFY THE SECTION ABOVE THIS LINE
@@ -43,13 +43,13 @@ function App() {
     >
       
       {/* ================================================= */}
-      {/* 🟢 HEY INTERN! VIBE CODE INSIDE THIS AREA BELOW! */}
+      {/* 🟢 HEY CURSUR! VIBE CODE INSIDE THIS AREA BELOW! */}
       {/* ================================================= */}
       
       {/* Your interactive content goes here! */}
       
       {/* ================================================= */}
-      {/* 🟢 HEY INTERN! VIBE CODE INSIDE THIS AREA ABOVE! */}
+      {/* 🟢 HEY CURSUR! VIBE CODE INSIDE THIS AREA ABOVE! */}
       {/* ================================================= */}
 
     </Template>

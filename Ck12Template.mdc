@@ -1,0 +1,39 @@
+---
+alwaysApply: true
+---
+
+# 🎓 Educational Interactive Template - Cursor Rules
+
+## 🚨 PRIMARY RULE: Interns Must Only Edit Within Green Boundaries
+
+This template has strict boundaries where non-technical interns can safely edit code.
+**NEVER suggest edits outside the marked green sections in App.jsx.**
+
+
+## 🔒 PROTECTED FILES - DO NOT TOUCH
+
+**NEVER modify any files in the `/src/template/` folder or its subfolders.**
+This includes: Template.jsx, Flexi.js, Footer/, Header/, assets/, index.js
+**ONLY App.jsx has safe editing zones marked with green comments.**
+
+## ✅ SAFE EDITING ZONES - Green Boundary Comments
+
+**ONLY edit code between these exact comment markers in App.jsx:
+`{/* 🟢 HEY CURSUR! VIBE CODE INSIDE THIS AREA BELOW! */}`
+and 
+`{/* 🟢 HEY CURSUR! VIBE CODE INSIDE THIS AREA ABOVE! */}`**
+
+-----------
+
+
+## 🛠️ TOOLS TO USE
+
+**ALWAYS use Tailwind CSS classes, never custom CSS.**
+**ALWAYS request screenshots when users report errors.**
+**ALWAYS use React libraries instead of manual implementations.**
+**NEVER delete comments in App.jsx outside the green editing zones.**
+
+## 👨‍💼 USER GUIDANCE
+
+**ALWAYS guide users with small, incremental steps for large requests.**
+**Act as a senior React engineer - break complex tasks into simple parts.**
