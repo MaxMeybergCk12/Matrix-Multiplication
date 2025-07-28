@@ -22,6 +22,9 @@ function App() {
     { pose: Flexi.thumbs_up, message: "Great job!" }
   ];
 
+  // ➕ ADD: Debug line to check flexi_steps
+  console.log("Flexi steps:", flexi_steps);
+
   // ==========================================
   // 🟢 MODIFY THE SECTION ABOVE THIS LINE
   // ==========================================
