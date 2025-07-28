@@ -22,14 +22,14 @@ function Template({ title, current_step, total_steps, flexi_steps, on_next, on_p
           {children}
         </div>
         
-        <div className="h-[20%] p-4 bg-blue-50 border-t border-gray-100 flex items-center justify-center">
-          <div className="flex items-center gap-4">
+        <div className="h-[30%] p-6 bg-blue-50 border-t border-gray-100 flex items-center justify-center">
+          <div className="flex items-center gap-6">
             <img 
               src={flexi} 
               alt="Flexi" 
-              className="w-16 h-16"
+              className="w-32 h-32"
             />
-            <div className="bg-white rounded-lg p-3 shadow-sm">
+            <div className="bg-white rounded-xl p-4 shadow-lg text-lg max-w-md">
               {flexi_message}
             </div>
           </div>

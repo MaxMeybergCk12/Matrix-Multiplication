@@ -17,13 +17,11 @@ function App() {
   const project_title = "Distributive Property"; // MODIFY THIS FOR YOUR PROJECT
   
   const flexi_steps = [
-    { pose: Flexi.confident, message: "I'm confident we'll learn!" },
-    { pose: Flexi.teacher, message: "Now let me teach!" },
-    { pose: Flexi.thumbs_up, message: "Great job!" }
+    { pose: Flexi.confident, message: "Welcome to the Template" },
+    { pose: Flexi.teacher, message: "Search for my text and modify what I say" },
+    { pose: Flexi.thumbs_up, message: "I have 3 steps by default but we can change that easily" }
   ];
 
-  // ➕ ADD: Debug line to check flexi_steps
-  console.log("Flexi steps:", flexi_steps);
 
   // ==========================================
   // 🟢 MODIFY THE SECTION ABOVE THIS LINE
