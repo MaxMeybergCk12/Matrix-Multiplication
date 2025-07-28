@@ -1,6 +1,9 @@
 ---
+description:
+globs:
 alwaysApply: true
 ---
+
 
 # 🎓 Educational Interactive Template - Cursor Rules
 
@@ -50,3 +53,4 @@ and
 **ALWAYS break down big requests into small, testable pieces.**
 **Guide them step-by-step: "Let's start with just the button, then we'll add the logic."**
 **Each code addition should be 5-15 lines maximum that can be tested immediately.**
+

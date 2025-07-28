@@ -1,1 +1,0 @@
-This is the naming convention to use the Flexi Assets easily
