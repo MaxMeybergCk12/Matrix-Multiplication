@@ -17,7 +17,7 @@ function App() {
   const project_title = "Distribtive Proeprty"; // MODIFY THIS FOR YOUR PROJECT
   
   const flexi_steps = [
-    { pose: Flexi.excited, message: "Welcome to the Template" },
+    { pose: Flexi.excited, message: "Welcome to the TemplateOo/OOOOOOOOOOOOOOOOOOOOOOOOOOOO" },
     { pose: Flexi.teacher, message: "Search for my text and modify what I say" },
     { pose: Flexi.thumbs_up, message: "You can also change my poses" },
     { pose: Flexi.pointing, message: "Dont forget to use the .mdc file to get the code to work better" },
