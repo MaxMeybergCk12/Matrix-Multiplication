@@ -14,7 +14,7 @@ function App() {
   // ==========================================
   
   const total_steps = 5; // Change me, How many Steps do you want?
-  const project_title = "Distribtive Proeprty"; // MODIFY THIS FOR YOUR PROJECT
+  const project_title = "TOPIC TITLE"; // MODIFY THIS FOR YOUR PROJECT
   
   const flexi_steps = [
     { pose: Flexi.excited, message: "Welcome to the Template!" },
