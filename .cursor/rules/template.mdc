@@ -71,3 +71,32 @@ and
 **Use Tailwind responsive classes when needed (sm:, md:, lg:).**
 **Test on both mobile and desktop during development.**
 
+## 🏗️ TEMPLATE TECHNICAL CONTEXT
+
+### STEP SYSTEM ARCHITECTURE
+- **`current_step`** - Available in green zones, managed by Template.jsx
+- **`total_steps`** - Set in green zones, controls button states  
+- **`flexi_steps`** - Array of {pose, message} objects, auto-syncs with current_step
+- **Navigation** - Handled by Template.jsx, updates current_step state
+
+### RESPONSIVE LAYOUT
+- **Mobile:** Fixed positioning for Flexi + buttons (Safari bar handling)
+- **Desktop:** Layout flow with integrated sections
+- **Content area:** Flex-1 with responsive padding (pb-32 mobile, pb-8 desktop)
+
+### COMPONENT STRUCTURE
+- **Template.jsx** - Main layout, handles mobile/desktop differences
+- **buttons.jsx** - Dual implementation (fixed mobile, layout desktop)
+- **App.jsx green zones** - User content area with access to current_step/total_steps
+
+### AVAILABLE IN GREEN ZONES
+- **current_step** (number) - Current active step
+- **total_steps** (number) - Total number of steps
+- **Conditional rendering** - Use current_step for step-based content
+- **Flexi integration** - flexi_steps array controls character behavior
+
+
+**Content automatically gets proper spacing on mobile/desktop.**
+**Use Tailwind responsive classes when needed (sm:, md:, lg:).**
+**Test on both mobile and desktop during development.**
+
