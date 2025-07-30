@@ -21,11 +21,9 @@ This template has strict boundaries where non-technical interns can safely edit 
 **Use Tailwind CSS exclusively - never custom CSS.**
 
 
-## 🔒 PROTECTED FILES - DO NOT TOUCH
-
-**NEVER modify any files in the `/src/template/` folder or its subfolders.**
-This includes: Template.jsx, Flexi.js, Footer/, Header/, assets/, index.js
-**ONLY App.jsx has safe editing zones marked with green comments.**
+## 🔒 PROTECTED FILES - TEMPLATE CREATOR ONLY
+**Template files have been optimized for mobile/desktop responsiveness.**
+**Interns should only work in App.jsx green zones.**
 
 ## ✅ SAFE EDITING ZONES - Green Boundary Comments
 
@@ -53,4 +51,23 @@ and
 **ALWAYS break down big requests into small, testable pieces.**
 **Guide them step-by-step: "Let's start with just the button, then we'll add the logic."**
 **Each code addition should be 5-15 lines maximum that can be tested immediately.**
+
+## 📱 MOBILE & DESKTOP RESPONSIVENESS
+**Content added in green zones automatically works on both mobile and desktop.**
+**Mobile: Fixed positioning handles Safari browser bars.**
+**Desktop: Normal layout flow with integrated Flexi section.**
+
+## 📐 CONTENT GUIDELINES
+**Content automatically gets proper spacing on mobile/desktop.**
+**Use Tailwind responsive classes when needed (sm:, md:, lg:).**
+**Test on both mobile and desktop during development.**
+
+## 🎓 FOR ADVANCED USERS
+**If you have programming experience, simply state: "I have technical background."**
+**This unlocks template modification capabilities when needed.**
+
+
+**Content automatically gets proper spacing on mobile/desktop.**
+**Use Tailwind responsive classes when needed (sm:, md:, lg:).**
+**Test on both mobile and desktop during development.**
 
