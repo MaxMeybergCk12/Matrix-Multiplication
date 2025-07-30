@@ -3,7 +3,8 @@ import React from 'react';
 
 function Buttons({ current_step, total_steps, on_next, on_prev }) {
   return (
-    <div className="fixed bottom-4 md:bottom-4 right-4 md:right-8 flex gap-3 z-50">
+    // Mobile buttons only - desktop buttons are now in Template.jsx
+    <div className="md:hidden fixed bottom-4 right-4 flex gap-3 z-50">
       <button 
         onClick={on_prev}
         disabled={current_step === 1}
