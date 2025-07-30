@@ -21,7 +21,7 @@ function App() {
     { pose: Flexi.teacher, message: "Search for my text and modify what I say" },
     { pose: Flexi.thumbs_up, message: "You can also change my poses" },
     { pose: Flexi.pointing, message: "I have a limit to how many words I can say at once, Otherwise, my text will need to be scrolled down on."},
-    { pose: Flexi.pointing, message: "I have an extra slide" }
+    { pose: Flexi.pointing, message: "I have a .mdc file pre-installed to allow Cursur ot help you" }
   ];
 
   // ==========================================
