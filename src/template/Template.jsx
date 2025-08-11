@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Title } from './Header';
 import Buttons from './Footer/buttons.jsx';
 import Flexi from './assets/Flexi.js';
 
-function Template({ title, current_step, total_steps, flexi_steps, on_next, on_prev, children }) {
+function Template({ current_step, total_steps, flexi_steps, on_next, on_prev, children }) {
   const [flexi, set_flexi] = useState(Flexi.confident);
   const [flexi_message, set_flexi_message] = useState("Ready to learn!");
 
@@ -14,63 +13,52 @@ function Template({ title, current_step, total_steps, flexi_steps, on_next, on_p
   }, [current_step, flexi_steps]);
 
   return (
-    <div className="w-screen h-screen bg-gray-50 flex items-center justify-center p-[2%]">
-      <div className="w-full h-full bg-white rounded-2xl shadow-lg flex flex-col">
-        <Title>{title}</Title>
-        
-        <div className="flex-1 p-8">
-          {children}
-        </div>
-
-        
-        <Buttons 
-          current_step={current_step}
-          total_steps={total_steps}
-          on_next={on_next}
-          on_prev={on_prev}
-        />
-        {/* Flexi - independent positioning */}
-        <div className="md:hidden fixed bottom-4 left-4 z-40">
-          <img src={flexi} className="w-20 h-20" />
-        </div>
-
-        {/* Speech bubble - independent positioning */}
-        <div className="md:hidden fixed bottom-20 left-28 z-40">
-          <div className="bg-white rounded-lg p-2 shadow-lg text-xs border border-gray-200 max-w-[140px] leading-tight max-h-32 overflow-y-auto break-words hyphens-none">
-            {flexi_message}
+    <div className="w-screen h-screen bg-gray-50 flex items-center justify-center p-1 sm:p-2 overflow-hidden">
+      <div className="w-full h-full bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden">
+        <div className="flex-1 p-1 sm:p-2 overflow-hidden">
+          <div className="w-full h-full overflow-auto">
+            {children}
           </div>
         </div>
-
-        {/* Desktop Flexi with integrated buttons */}
-        <div className="hidden md:block h-[25%] p-8 bg-gradient-to-r from-blue-50 to-indigo-50 border-t border-gray-200 relative">
-          <div className="flex items-center gap-8 h-full">
+        
+        <div className="h-[12%] min-h-[80px] p-2 sm:p-4 bg-blue-50 border-t border-gray-100 flex items-center justify-between">
+          <div className="flex items-center gap-2 sm:gap-4 w-[70%]">
             <img 
               src={flexi} 
               alt="Flexi" 
-              className="w-32 h-32 flex-shrink-0"
+              className="w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0"
             />
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200 text-lg leading-relaxed max-w-2xl">
+            <div className="bg-white rounded-xl p-2 sm:p-3 shadow-lg text-sm sm:text-base max-w-sm">
               {flexi_message}
             </div>
           </div>
           
-          {/* Desktop buttons - bottom right corner */}
-          <div className="absolute bottom-6 right-6 flex gap-4">
-            <button 
-              onClick={on_prev}
-              disabled={current_step === 1}
-              className="w-14 h-14 bg-green-500 hover:bg-green-600 disabled:bg-gray-300 rounded-full flex items-center justify-center text-white font-bold text-xl transition-colors shadow-lg hover:shadow-xl"
-            >
-              ←
-            </button>
+          <div className="w-[30%] flex justify-center">
+            <Buttons 
+              current_step={current_step}
+              total_steps={total_steps}
+              on_next={on_next}
+              on_prev={on_prev}
+            />
             
-            <button 
-              onClick={on_next}
-              disabled={current_step === total_steps}
-              className="w-14 h-14 bg-green-500 hover:bg-green-600 disabled:bg-gray-300 rounded-full flex items-center justify-center text-white font-bold text-xl transition-colors shadow-lg hover:shadow-xl"
-            >
-              →
-            </button>
+            {/* Desktop navigation buttons */}
+            <div className="hidden md:flex gap-4">
+              <button 
+                onClick={on_prev}
+                disabled={current_step === 1}
+                className="w-10 h-10 bg-gray-300 hover:bg-gray-400 disabled:bg-gray-200 rounded-full flex items-center justify-center text-white font-bold text-lg transition-colors shadow-lg disabled:cursor-not-allowed"
+              >
+                ←
+              </button>
+              
+              <button 
+                onClick={on_next}
+                disabled={current_step === total_steps}
+                className="w-10 h-10 bg-green-500 hover:bg-green-600 disabled:bg-gray-200 rounded-full flex items-center justify-center text-white font-bold text-lg transition-colors shadow-lg disabled:cursor-not-allowed"
+              >
+                →
+              </button>
+            </div>
           </div>
         </div>
       </div>

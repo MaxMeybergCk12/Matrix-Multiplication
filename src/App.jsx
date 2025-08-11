@@ -14,14 +14,13 @@ function App() {
   // ==========================================
   
   const total_steps = 5; // Change me, How many Steps do you want?
-  const project_title = "TOPIC TITLE"; // MODIFY THIS FOR YOUR PROJECT
   
   const flexi_steps = [
-    { pose: Flexi.excited, message: "Welcome to the Template!" },
+    { pose: Flexi.excited, message: "Welcome to the Template" },
     { pose: Flexi.teacher, message: "Search for my text and modify what I say" },
     { pose: Flexi.thumbs_up, message: "You can also change my poses" },
-    { pose: Flexi.pointing, message: "I have a limit to how many words I can say at once, Otherwise, my text will need to be scrolled down on."},
-    { pose: Flexi.pointing, message: "I have a .mdc file pre-installed to allow Cursur ot help you" }
+    { pose: Flexi.pointing, message: "Dont forget to use the .mdc file to get the code to work better" },
+    { pose: Flexi.pointing, message: "I have an extra slide" }
   ];
 
   // ==========================================
@@ -34,7 +33,6 @@ function App() {
   
   return (
     <Template 
-      title={project_title}
       current_step={current_step}
       total_steps={total_steps}
       flexi_steps={flexi_steps}
@@ -46,7 +44,7 @@ function App() {
       {/* 🟢 HEY CURSUR! VIBE CODE INSIDE THIS AREA BELOW! */}
       {/* ================================================= */}
       
-      {/* Your interactive content goes here! */}
+    
       
       {/* ================================================= */}
       {/* 🟢 HEY CURSUR! VIBE CODE INSIDE THIS AREA ABOVE! */}
