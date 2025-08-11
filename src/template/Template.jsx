@@ -33,32 +33,15 @@ function Template({ current_step, total_steps, flexi_steps, on_next, on_prev, ch
             </div>
           </div>
           
-          <div className="w-[30%] flex justify-center">
+          <div className="w-[30%] flex justify-end items-center">
             <Buttons 
               current_step={current_step}
               total_steps={total_steps}
               on_next={on_next}
               on_prev={on_prev}
             />
-            
-            {/* Desktop navigation buttons */}
-            <div className="hidden md:flex gap-4">
-              <button 
-                onClick={on_prev}
-                disabled={current_step === 1}
-                className="w-10 h-10 bg-gray-300 hover:bg-gray-400 disabled:bg-gray-200 rounded-full flex items-center justify-center text-white font-bold text-lg transition-colors shadow-lg disabled:cursor-not-allowed"
-              >
-                ←
-              </button>
               
-              <button 
-                onClick={on_next}
-                disabled={current_step === total_steps}
-                className="w-10 h-10 bg-green-500 hover:bg-green-600 disabled:bg-gray-200 rounded-full flex items-center justify-center text-white font-bold text-lg transition-colors shadow-lg disabled:cursor-not-allowed"
-              >
-                →
-              </button>
-            </div>
+            
           </div>
         </div>
       </div>
