@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Template from './template/Template.jsx';
 import Flexi from './template/assets/Flexi.js';
-import MatrixTest from './components/MatrixTest/MatrixTest';
+
 
 function App() {
   const [current_step, set_current_step] = useState(1);
@@ -45,7 +45,7 @@ function App() {
       {/* 🟢 HEY CURSUR! VIBE CODE INSIDE THIS AREA BELOW! */}
       {/* ================================================= */}
       
-      <MatrixTest />
+
       
       {/* ================================================= */}
       {/* 🟢 HEY CURSUR! VIBE CODE INSIDE THIS AREA ABOVE! */}
