@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Template from './template/Template.jsx';
 import Flexi from './template/assets/Flexi.js';
+import MatrixLayoutVisualizer from './components/utils/layout/MatrixLayoutVisualizer';
 
 
 function App() {
@@ -45,7 +46,18 @@ function App() {
       {/* 🟢 HEY CURSUR! VIBE CODE INSIDE THIS AREA BELOW! */}
       {/* ================================================= */}
       
-
+      {current_step === 1 && (
+        <div className="space-y-6">
+          <h2 className="text-2xl font-bold text-center">Matrix Layout Test</h2>
+          <MatrixLayoutVisualizer 
+            matrixA={[3, 3]} 
+            matrixB={[3, 1]} 
+            totalWidth={484} 
+            totalHeight={404} 
+            margins={15} 
+          />
+        </div>
+      )}
       
       {/* ================================================= */}
       {/* 🟢 HEY CURSUR! VIBE CODE INSIDE THIS AREA ABOVE! */}

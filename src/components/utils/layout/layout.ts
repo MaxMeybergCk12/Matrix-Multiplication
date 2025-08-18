@@ -1,7 +1,7 @@
 // src/components/utils/layout.ts
 // Decides space allocation for each matrix in the 5-column grid
 
-import { MatrixInput, MatrixSize } from '../types';
+import { MatrixInput, MatrixSize } from '../../types';
 
 // ===== HELPER FUNCTIONS =====
 
