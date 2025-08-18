@@ -89,18 +89,28 @@ function allocateMatrixSpace(
   matrixSizes.matrixC.height = cRows * heightPerRow;
   
   // For square matrix cases, use min(width, height) to avoid rectangles
-  if ((aRows === aCols && bRows === bCols) || (aRows === aCols && bRows === bCols)) {
-    const minDimension = Math.min(matrixSizes.matrixA.width, matrixSizes.matrixA.height);
-    matrixSizes.matrixA.width = minDimension;
-    matrixSizes.matrixA.height = minDimension;
+  // Check if result matrix is square, or if both input matrices are square
+  const isResultSquare = cRows === cCols;
+  const areInputsSquare = (aRows === aCols && bRows === bCols);
+  
+  if (isResultSquare || areInputsSquare) {
+    // For result matrix (always apply if it's square)
+    if (isResultSquare) {
+      const minDimensionC = Math.min(matrixSizes.matrixC.width, matrixSizes.matrixC.height);
+      matrixSizes.matrixC.width = minDimensionC;
+      matrixSizes.matrixC.height = minDimensionC;
+    }
     
-    const minDimensionB = Math.min(matrixSizes.matrixB.width, matrixSizes.matrixB.height);
-    matrixSizes.matrixB.width = minDimensionB;
-    matrixSizes.matrixB.height = minDimensionB;
-    
-    const minDimensionC = Math.min(matrixSizes.matrixC.width, matrixSizes.matrixC.height);
-    matrixSizes.matrixC.width = minDimensionC;
-    matrixSizes.matrixC.height = minDimensionC;
+    // For input matrices (only if they're both square)
+    if (areInputsSquare) {
+      const minDimensionA = Math.min(matrixSizes.matrixA.width, matrixSizes.matrixA.height);
+      matrixSizes.matrixA.width = minDimensionA;
+      matrixSizes.matrixA.height = minDimensionA;
+      
+      const minDimensionB = Math.min(matrixSizes.matrixB.width, matrixSizes.matrixB.height);
+      matrixSizes.matrixB.width = minDimensionB;
+      matrixSizes.matrixB.height = minDimensionB;
+    }
   }
   
   return {

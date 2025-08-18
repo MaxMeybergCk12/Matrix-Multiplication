@@ -35,7 +35,7 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutVisualizerProps> = ({
         className="absolute border-2 border-red-600 bg-red-200 flex items-center justify-center text-red-800 font-bold"
         style={{
           left: 0,
-          top: 0,
+          top: (layout.workingSpace.height / 4) - (layout.matrixA.height / 2),
           width: layout.matrixA.width,
           height: layout.matrixA.height
         }}
@@ -48,7 +48,7 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutVisualizerProps> = ({
         className="absolute border-2 border-orange-600 bg-orange-200 flex items-center justify-center text-orange-800 font-bold text-xl"
         style={{
           left: layout.matrixA.width,
-          top: (layout.workingSpace.height / 2) - (layout.symbols.width / 2),
+          top: (layout.workingSpace.height / 4) - (layout.symbols.width / 2),
           width: layout.symbols.width,
           height: layout.symbols.width
         }}
@@ -61,7 +61,7 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutVisualizerProps> = ({
         className="absolute border-2 border-yellow-600 bg-yellow-200 flex items-center justify-center text-yellow-800 font-bold"
         style={{
           left: layout.matrixA.width + layout.symbols.width,
-          top: 0,
+          top: (layout.workingSpace.height / 4) - (layout.matrixB.height / 2),
           width: layout.matrixB.width,
           height: layout.matrixB.height
         }}
@@ -74,7 +74,7 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutVisualizerProps> = ({
         className="absolute border-2 border-green-600 bg-green-200 flex items-center justify-center text-green-800 font-bold text-xl"
         style={{
           left: layout.matrixA.width + layout.symbols.width + layout.matrixB.width,
-          top: (layout.workingSpace.height / 2) - (layout.symbols.width / 2),
+          top: (layout.workingSpace.height / 4) - (layout.symbols.width / 2),
           width: layout.symbols.width,
           height: layout.symbols.width
         }}
@@ -87,7 +87,7 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutVisualizerProps> = ({
         className="absolute border-2 border-blue-600 bg-blue-200 flex items-center justify-center text-blue-800 font-bold"
         style={{
           left: layout.matrixA.width + layout.symbols.width + layout.matrixB.width + layout.symbols.width,
-          top: 0,
+          top: (layout.workingSpace.height / 4) - (layout.matrixC.height / 2),
           width: layout.matrixC.width,
           height: layout.matrixC.height
         }}

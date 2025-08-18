@@ -20,9 +20,9 @@ function App() {
   const flexi_steps = [
     { pose: Flexi.excited, message: "Matrix A: 3×3, Matrix B: 3×3, Matrix C: 3×3" },
     { pose: Flexi.teacher, message: "Matrix A: 2×2, Matrix B: 2×1, Matrix C: 2×1" },
-    { pose: Flexi.thumbs_up, message: "You can also change my poses" },
-    { pose: Flexi.pointing, message: "Dont forget to use the .mdc file to get the code to work better" },
-    { pose: Flexi.pointing, message: "I have an extra slide" }
+    { pose: Flexi.thumbs_up, message: "Matrix A: 3×2, Matrix B: 2×3, Matrix C: 3×3" },
+    { pose: Flexi.pointing, message: "Matrix A: 2×1, Matrix B: 1×2, Matrix C: 2×2" },
+    { pose: Flexi.pointing, message: "Matrix A: 1×3, Matrix B: 3×1, Matrix C: 1×1" }
   ];
 
   // ==========================================
@@ -48,8 +48,8 @@ function App() {
       
       {current_step === 1 && (
         <MatrixLayoutVisualizer 
-          matrixA={[3, 2]} 
-          matrixB={[2, 3]} 
+          matrixA={[3, 3]} 
+          matrixB={[3, 3]} 
           totalWidth={484} 
           totalHeight={404} 
           margins={15} 
@@ -68,8 +68,28 @@ function App() {
 
       {current_step === 3 && (
         <MatrixLayoutVisualizer 
-          matrixA={[2, 2]} 
-          matrixB={[2, 2]} 
+          matrixA={[3, 2]} 
+          matrixB={[2, 3]} 
+          totalWidth={484} 
+          totalHeight={404} 
+          margins={15} 
+        />
+      )}
+
+      {current_step === 4 && (
+        <MatrixLayoutVisualizer 
+          matrixA={[2, 1]} 
+          matrixB={[1, 2]} 
+          totalWidth={484} 
+          totalHeight={404} 
+          margins={15} 
+        />
+      )}
+
+      {current_step === 5 && (
+        <MatrixLayoutVisualizer 
+          matrixA={[1, 3]} 
+          matrixB={[3, 1]} 
           totalWidth={484} 
           totalHeight={404} 
           margins={15} 
