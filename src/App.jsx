@@ -48,8 +48,8 @@ function App() {
       
       {current_step === 1 && (
         <MatrixLayoutVisualizer 
-          matrixA={[3, 3]} 
-          matrixB={[3, 3]} 
+          matrixA={[3, 2]} 
+          matrixB={[2, 3]} 
           totalWidth={484} 
           totalHeight={404} 
           margins={15} 
@@ -60,6 +60,16 @@ function App() {
         <MatrixLayoutVisualizer 
           matrixA={[2, 2]} 
           matrixB={[2, 1]} 
+          totalWidth={484} 
+          totalHeight={404} 
+          margins={15} 
+        />
+      )}
+
+      {current_step === 3 && (
+        <MatrixLayoutVisualizer 
+          matrixA={[2, 2]} 
+          matrixB={[2, 2]} 
           totalWidth={484} 
           totalHeight={404} 
           margins={15} 

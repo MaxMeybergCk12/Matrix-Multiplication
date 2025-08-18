@@ -88,6 +88,21 @@ function allocateMatrixSpace(
   matrixSizes.matrixB.height = bRows * heightPerRow;
   matrixSizes.matrixC.height = cRows * heightPerRow;
   
+  // For square matrix cases, use min(width, height) to avoid rectangles
+  if ((aRows === aCols && bRows === bCols) || (aRows === aCols && bRows === bCols)) {
+    const minDimension = Math.min(matrixSizes.matrixA.width, matrixSizes.matrixA.height);
+    matrixSizes.matrixA.width = minDimension;
+    matrixSizes.matrixA.height = minDimension;
+    
+    const minDimensionB = Math.min(matrixSizes.matrixB.width, matrixSizes.matrixB.height);
+    matrixSizes.matrixB.width = minDimensionB;
+    matrixSizes.matrixB.height = minDimensionB;
+    
+    const minDimensionC = Math.min(matrixSizes.matrixC.width, matrixSizes.matrixC.height);
+    matrixSizes.matrixC.width = minDimensionC;
+    matrixSizes.matrixC.height = minDimensionC;
+  }
+  
   return {
     matrixA: matrixSizes.matrixA,
     matrixB: matrixSizes.matrixB,
