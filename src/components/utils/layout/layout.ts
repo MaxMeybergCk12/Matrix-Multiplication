@@ -44,10 +44,11 @@ function allocateMatrixWidths(matrixA: MatrixInput, matrixB: MatrixInput, availa
   
   const { totalSymbolWidth, remainingWidth } = calculateSymbolWidths(availableWidth);
   
-  // Calculate total columns for all matrices
+  // Calculate total columns for all matrices (excluding symbols)
   const totalColumns = aCols + bCols + cCols;
   
   // Allocate width proportionally based on actual column counts
+  // This gives us the most accurate visual representation
   const matrixAWidth = (aCols / totalColumns) * remainingWidth;
   const matrixBWidth = (bCols / totalColumns) * remainingWidth;
   const matrixCWidth = (cCols / totalColumns) * remainingWidth;
