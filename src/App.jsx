@@ -18,8 +18,8 @@ function App() {
   const total_steps = 5; // Change me, How many Steps do you want?
   
   const flexi_steps = [
-    { pose: Flexi.excited, message: "Welcome to the Template" },
-    { pose: Flexi.teacher, message: "Search for my text and modify what I say" },
+    { pose: Flexi.excited, message: "Matrix A: 3×3, Matrix B: 3×3, Matrix C: 3×3" },
+    { pose: Flexi.teacher, message: "Matrix A: 2×2, Matrix B: 2×1, Matrix C: 2×1" },
     { pose: Flexi.thumbs_up, message: "You can also change my poses" },
     { pose: Flexi.pointing, message: "Dont forget to use the .mdc file to get the code to work better" },
     { pose: Flexi.pointing, message: "I have an extra slide" }
@@ -47,16 +47,23 @@ function App() {
       {/* ================================================= */}
       
       {current_step === 1 && (
-        <div className="space-y-6">
-          <h2 className="text-2xl font-bold text-center">Matrix Layout Test</h2>
-          <MatrixLayoutVisualizer 
-            matrixA={[3, 3]} 
-            matrixB={[3, 1]} 
-            totalWidth={484} 
-            totalHeight={404} 
-            margins={15} 
-          />
-        </div>
+        <MatrixLayoutVisualizer 
+          matrixA={[3, 3]} 
+          matrixB={[3, 3]} 
+          totalWidth={484} 
+          totalHeight={404} 
+          margins={15} 
+        />
+      )}
+
+      {current_step === 2 && (
+        <MatrixLayoutVisualizer 
+          matrixA={[2, 2]} 
+          matrixB={[2, 1]} 
+          totalWidth={484} 
+          totalHeight={404} 
+          margins={15} 
+        />
       )}
       
       {/* ================================================= */}

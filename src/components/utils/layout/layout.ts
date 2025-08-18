@@ -44,18 +44,18 @@ function allocateMatrixWidths(matrixA: MatrixInput, matrixB: MatrixInput, availa
   
   const { totalSymbolWidth, remainingWidth } = calculateSymbolWidths(availableWidth);
   
-  // Group matrices by column count for fair distribution
-  const threeColumnMatrices = [aCols, cCols].filter(cols => cols === 3).length;
-  const oneColumnMatrices = [bCols, cCols].filter(cols => cols === 1).length;
+  // Calculate total columns for all matrices
+  const totalColumns = aCols + bCols + cCols;
   
-  // Allocate remaining width proportionally
-  const threeColumnWidth = threeColumnMatrices > 0 ? remainingWidth * 0.6 / threeColumnMatrices : 0;
-  const oneColumnWidth = oneColumnMatrices > 0 ? remainingWidth * 0.4 / oneColumnMatrices : 0;
+  // Allocate width proportionally based on actual column counts
+  const matrixAWidth = (aCols / totalColumns) * remainingWidth;
+  const matrixBWidth = (bCols / totalColumns) * remainingWidth;
+  const matrixCWidth = (cCols / totalColumns) * remainingWidth;
   
   return {
-    matrixA: { width: threeColumnWidth, height: 0 },  // Height calculated later
-    matrixB: { width: oneColumnWidth, height: 0 },
-    matrixC: { width: oneColumnWidth, height: 0 },
+    matrixA: { width: matrixAWidth, height: 0 },
+    matrixB: { width: matrixBWidth, height: 0 },
+    matrixC: { width: matrixCWidth, height: 0 },
     symbolWidth: 40
   };
 }
