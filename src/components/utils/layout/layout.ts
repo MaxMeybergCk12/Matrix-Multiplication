@@ -2,6 +2,7 @@
 // Decides space allocation for each matrix in the 5-column grid
 
 import { MatrixInput, MatrixSize } from '../../types';
+import { createSpacingCalculator, SpacingConstraints } from '../spacing';
 
 // ===== HELPER FUNCTIONS =====
 
@@ -69,56 +70,45 @@ function allocateMatrixSpace(
   totalHeight: number,     // 404
   margins: number = 15     // Default margins
 ) {
-  // 1. Calculate working space
-  const workingSpace = calculateWorkingSpace(totalWidth, totalHeight, margins);
+  // Create spacing calculator with custom configuration
+  const spacingCalculator = createSpacingCalculator({
+    margins,
+    symbolWidth: 40,
+    minCellSize: 20,
+    maxCellSize: 80,
+    cellPadding: 4
+  });
   
-  // 2. Allocate matrix widths
-  const matrixSizes = allocateMatrixWidths(matrixA, matrixB, workingSpace.width);
+  // Define constraints for the layout
+  const constraints: SpacingConstraints = {
+    maxWidth: totalWidth,
+    maxHeight: totalHeight,
+    minSpacing: 10,
+    maintainAspectRatio: true
+  };
   
-  // 3. Calculate heights (proportional to rows)
-  const [aRows, aCols] = matrixA;
-  const [bRows, bCols] = matrixB;
-  const { cRows, cCols } = calculateMatrixCDimensions(matrixA, matrixB);
+  // Calculate optimal spacing using the new system
+  const spacingResult = spacingCalculator.calculateSpacing(matrixA, matrixB, constraints);
   
-  // Height based on row count (top half of available space)
-  const maxRows = Math.max(aRows, bRows, cRows);
-  const heightPerRow = (workingSpace.height / 2) / maxRows;  // Top half only
-  
-  matrixSizes.matrixA.height = aRows * heightPerRow;
-  matrixSizes.matrixB.height = bRows * heightPerRow;
-  matrixSizes.matrixC.height = cRows * heightPerRow;
-  
-  // For square matrix cases, use min(width, height) to avoid rectangles
-  // Check if result matrix is square, or if both input matrices are square
-  const isResultSquare = cRows === cCols;
-  const areInputsSquare = (aRows === aCols && bRows === bCols);
-  
-  if (isResultSquare || areInputsSquare) {
-    // For result matrix (always apply if it's square)
-    if (isResultSquare) {
-      const minDimensionC = Math.min(matrixSizes.matrixC.width, matrixSizes.matrixC.height);
-      matrixSizes.matrixC.width = minDimensionC;
-      matrixSizes.matrixC.height = minDimensionC;
-    }
-    
-    // For input matrices (only if they're both square)
-    if (areInputsSquare) {
-      const minDimensionA = Math.min(matrixSizes.matrixA.width, matrixSizes.matrixA.height);
-      matrixSizes.matrixA.width = minDimensionA;
-      matrixSizes.matrixA.height = minDimensionA;
-      
-      const minDimensionB = Math.min(matrixSizes.matrixB.width, matrixSizes.matrixB.height);
-      matrixSizes.matrixB.width = minDimensionB;
-      matrixSizes.matrixB.height = minDimensionB;
-    }
-  }
-  
+  // Convert to the existing format for backward compatibility
   return {
-    matrixA: matrixSizes.matrixA,
-    matrixB: matrixSizes.matrixB,
-    matrixC: matrixSizes.matrixC,
-    symbols: { width: matrixSizes.symbolWidth },
-    workingSpace
+    matrixA: {
+      width: spacingResult.matrixA.width,
+      height: spacingResult.matrixA.height
+    },
+    matrixB: {
+      width: spacingResult.matrixB.width,
+      height: spacingResult.matrixB.height
+    },
+    matrixC: {
+      width: spacingResult.matrixC.width,
+      height: spacingResult.matrixC.height
+    },
+    symbols: { width: spacingResult.symbols.multiply.width },
+    workingSpace: {
+      width: totalWidth - (margins * 2),
+      height: totalHeight - (margins * 2)
+    }
   };
 }
 
