@@ -56,45 +56,6 @@ function App() {
         />
       )}
 
-      {current_step === 2 && (
-        <MatrixLayoutVisualizer 
-          matrixA={[2, 2]} 
-          matrixB={[2, 1]} 
-          totalWidth={484} 
-          totalHeight={404} 
-          margins={15} 
-        />
-      )}
-
-      {current_step === 3 && (
-        <MatrixLayoutVisualizer 
-          matrixA={[3, 2]} 
-          matrixB={[2, 3]} 
-          totalWidth={484} 
-          totalHeight={404} 
-          margins={15} 
-        />
-      )}
-
-      {current_step === 4 && (
-        <MatrixLayoutVisualizer 
-          matrixA={[2, 1]} 
-          matrixB={[1, 2]} 
-          totalWidth={484} 
-          totalHeight={404} 
-          margins={15} 
-        />
-      )}
-
-      {current_step === 5 && (
-        <MatrixLayoutVisualizer 
-          matrixA={[1, 3]} 
-          matrixB={[3, 1]} 
-          totalWidth={484} 
-          totalHeight={404} 
-          margins={15} 
-        />
-      )}
       
       {/* ================================================= */}
       {/* 🟢 HEY CURSUR! VIBE CODE INSIDE THIS AREA ABOVE! */}
