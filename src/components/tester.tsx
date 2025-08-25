@@ -14,7 +14,7 @@ const Tester: React.FC<TesterProps> = ({ layout, matrices}) => {
     
     return (
         <div className="relative border-2 border-gray-400 bg-gray-100" style={{ width: availableWidth, height: 202 }}>
-            <div className="grid grid-cols-11 items-center" style={{
+            <div className="grid grid-cols items-center" style={{
                 gridTemplateColumns: `
                     ${layout.brackets.width}px
                     ${layout.matrixA.width}px

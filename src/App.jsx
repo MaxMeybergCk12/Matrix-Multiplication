@@ -68,6 +68,7 @@ function App() {
                     matrixB={[3, 2]}
                     totalWidth={484}
                     totalHeight={404}
+                    currentStep={current_step}
                 />
             )}
 
