@@ -27,8 +27,23 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
       totalHeight,
   ), [matrices, totalWidth, totalHeight]);
 
+
+  
+
   // Step 3: Call Tester
-  return <Tester layout={layout} />;
+  return (
+    <div>
+        {/* Top Half - Contains Tester */}
+        <div style={{ height: totalHeight / 2 }}>
+            <Tester layout={layout} />
+        </div>
+        
+        {/* Bottom Half - TODO Later */}
+        <div style={{ height: totalHeight / 2, backgroundColor: 'lightgray' }}>
+            <p className="text-center text-gray-600 mt-4">TODO: Bottom Half Content</p>
+        </div>
+    </div>
+);
 };
 
 export default MatrixLayoutVisualizer;
