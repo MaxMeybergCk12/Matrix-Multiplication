@@ -8,10 +8,6 @@ function generateRandomNumber(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Generate a unique ID for matrices
-function generateMatrixId(): string {
-  return `matrix_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-}
 
 // Generate a matrix with random values
 export function generateMatrix(
@@ -34,7 +30,6 @@ export function generateMatrix(
   return {
     dimensions,
     values,
-    id: generateMatrixId()
   };
 }
 
@@ -47,25 +42,6 @@ export function generateMatrixPair(
   return {
     matrixA: generateMatrix(matrixA, options),
     matrixB: generateMatrix(matrixB, options)
-  };
-}
-
-// Generate a complete matrix state (A, B, and calculated C)
-export function generateCompleteMatrixState(
-  matrixA: [number, number],
-  matrixB: [number, number],
-  options: MatrixGenerationOptions = {}
-): { matrixA: MatrixData; matrixB: MatrixData; matrixC: MatrixData } {
-  const pair = generateMatrixPair(matrixA, matrixB, options);
-  
-  // Calculate Matrix C dimensions: [aRows, bCols]
-  const matrixCDimensions: [number, number] = [matrixA[0], matrixB[1]];
-  const matrixC = generateMatrix(matrixCDimensions, options);
-  
-  return {
-    matrixA: pair.matrixA,
-    matrixB: pair.matrixB,
-    matrixC
   };
 }
 
