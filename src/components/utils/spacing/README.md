@@ -5,47 +5,56 @@ This folder contains the TypeScript modules responsible for calculating and allo
 ## Files Overview
 
 ### `types.ts`
+
 Defines all TypeScript interfaces and types for the spacing system:
+
 - `SpacingConfig`: Configuration options for spacing calculations
 - `MatrixSpacing`: Individual matrix spacing properties
 - `SpacingAllocation`: Complete spacing allocation for all matrices
 - `SpacingConstraints`: Layout constraints and limitations
 
 ### `calculator.ts`
+
 Contains the main `MatrixSpacingCalculator` class with methods for:
+
 - Calculating optimal spacing for matrix multiplication layouts (A × B = C)
 - Ensuring consistent cell sizes across matrices
 - Handling responsive constraints
 - Managing minimum and maximum spacing requirements
 
 ### `index.ts`
+
 Main export file that provides easy access to all spacing functionality.
 
 ## Usage Example
 
 ```typescript
-import { createSpacingCalculator, SpacingConstraints } from './spacing';
+import { createSpacingCalculator, SpacingConstraints } from "./spacing";
 
 // Create a spacing calculator
 const spacingCalculator = createSpacingCalculator({
-  margins: 20,
-  symbolWidth: 50,
-  minCellSize: 25,
-  maxCellSize: 100
+    margins: 20,
+    symbolWidth: 50,
+    minCellSize: 25,
+    maxCellSize: 100,
 });
 
 // Define matrices and constraints
 const matrixA: [number, number] = [3, 3];
 const matrixB: [number, number] = [3, 2];
 const constraints: SpacingConstraints = {
-  maxWidth: 800,
-  maxHeight: 600,
-  minSpacing: 10,
-  maintainAspectRatio: true
+    maxWidth: 800,
+    maxHeight: 600,
+    minSpacing: 10,
+    maintainAspectRatio: true,
 };
 
 // Calculate spacing
-const spacing = spacingCalculator.calculateSpacing(matrixA, matrixB, constraints);
+const spacing = spacingCalculator.calculateSpacing(
+    matrixA,
+    matrixB,
+    constraints,
+);
 
 console.log(spacing);
 // Returns: SpacingAllocation with optimal dimensions for all matrices
@@ -62,6 +71,7 @@ console.log(spacing);
 ## Integration
 
 This spacing system is designed to work with:
+
 - The existing layout system in `../layout/`
 - Matrix type definitions in `../../types/`
 - The main matrix visualization components

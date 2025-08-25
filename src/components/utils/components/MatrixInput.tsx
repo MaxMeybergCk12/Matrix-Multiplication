@@ -1,37 +1,37 @@
 // Matrix Input Component
 // Individual input field for matrix values
 
-import React from 'react';
+import React from "react";
 
 interface MatrixInputProps {
-  value: number;
-  onChange: (value: number) => void;
-  disabled?: boolean;
-  className?: string;
+    value: number;
+    onChange: (value: number) => void;
+    disabled?: boolean;
+    className?: string;
 }
 
-const MatrixInput: React.FC<MatrixInputProps> = ({ 
-  value, 
-  onChange, 
-  disabled = false,
-  className = ''
+const MatrixInput: React.FC<MatrixInputProps> = ({
+    value,
+    onChange,
+    disabled = false,
+    className = "",
 }) => {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = parseInt(e.target.value) || 0;
-    if (newValue >= 0 && newValue <= 9) {
-      onChange(newValue);
-    }
-  };
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newValue = parseInt(e.target.value) || 0;
+        if (newValue >= 0 && newValue <= 9) {
+            onChange(newValue);
+        }
+    };
 
-  return (
-    <input
-      type="number"
-      min="0"
-      max="9"
-      value={value}
-      onChange={handleChange}
-      disabled={disabled}
-      className={`
+    return (
+        <input
+            type="number"
+            min="0"
+            max="9"
+            value={value}
+            onChange={handleChange}
+            disabled={disabled}
+            className={`
         w-8 h-8 
         text-center 
         text-sm 
@@ -47,9 +47,8 @@ const MatrixInput: React.FC<MatrixInputProps> = ({
         disabled:text-gray-500
         ${className}
       `}
-    />
-  );
+        />
+    );
 };
 
 export default MatrixInput;
-
