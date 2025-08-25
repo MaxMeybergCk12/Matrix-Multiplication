@@ -42,7 +42,7 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
         
         {/* Bottom Half - TODO Later */}
         <div style={{ height: totalHeight / 2, backgroundColor: 'lightgray' }}>
-            <p className="text-center text-gray-600 mt-4">TODO: Bottom Half Content</p>
+            <p className="text-center text-gray-600">TODO: Bottom Half Content</p>
         </div>
     </div>
 );

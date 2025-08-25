@@ -13,10 +13,10 @@ export function allocateMatrixSpace(
     totalHeight: number,
 ) {
     // Fixed spacing requirements
-    const ELEMENT_SPACING = 3;           // 3px between elements
+    const ELEMENT_SPACING = 1;           // 3px between elements
     const SYMBOL_WIDTH = 20;             // × and = symbols
     const BRACKET_WIDTH = 10;            // Left and right brackets
-    const BRACKET_HEIGHT = totalHeight;  // 80% of total height
+    const BRACKET_HEIGHT = totalHeight;  // s
     
     // Calculate total fixed space
     const totalFixedWidth = (BRACKET_WIDTH * 6) + (SYMBOL_WIDTH * 2) + (ELEMENT_SPACING * 10);

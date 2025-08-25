@@ -64,8 +64,8 @@ function App() {
 
                 // Then somewhere in your JSX:
                 <MatrixLayoutVisualizer
-                    matrixA={[3, 2]}
-                    matrixB={[2, 3]}
+                    matrixA={[1, 3]}
+                    matrixB={[3, 2]}
                     totalWidth={484}
                     totalHeight={404}
                 />

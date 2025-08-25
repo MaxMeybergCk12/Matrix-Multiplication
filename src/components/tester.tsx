@@ -7,29 +7,21 @@ interface TesterProps {
     matrices: any;
 }
 
+
 const Tester: React.FC<TesterProps> = ({ layout, matrices}) => {
-    const totalGridWidth = (
-        layout.brackets.width * 6 + layout.matrixA.width + layout.matrixB.width + 
-        layout.matrixC.width + layout.symbols.x.width + layout.symbols.equals.width
-    );
-
-    const availableWidth = 484;
-    const remainingWidth = availableWidth - totalGridWidth;
-
-    const a_extra = Math.floor((remainingWidth * layout.matrixA.width) / (layout.matrixA.width + layout.matrixB.width + layout.matrixC.width));
-    const b_extra = Math.floor((remainingWidth * layout.matrixB.width) / (layout.matrixA.width + layout.matrixB.width + layout.matrixC.width));
-    const c_extra = Math.floor((remainingWidth * layout.matrixC.width) / (layout.matrixA.width + layout.matrixB.width + layout.matrixC.width));
-
+    // Use layout values directly - no calculations needed
+    const availableWidth = layout.spacing.totalWidth;
+    
     return (
         <div className="relative border-2 border-gray-400 bg-gray-100" style={{ width: availableWidth, height: 202 }}>
             <div className="grid grid-cols-11 items-center" style={{
                 gridTemplateColumns: `
                     ${layout.brackets.width}px
-                    ${layout.matrixA.width + a_extra}px
+                    ${layout.matrixA.width}px
                     ${layout.brackets.width}px
                     ${layout.symbols.x.width}px
                     ${layout.brackets.width}px
-                    ${layout.matrixB.width + b_extra}px
+                    ${layout.matrixB.width}px
                     ${layout.brackets.width}px
                     ${layout.symbols.equals.width}px
                     ${layout.brackets.width}px
