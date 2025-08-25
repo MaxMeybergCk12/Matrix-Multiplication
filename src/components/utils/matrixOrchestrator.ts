@@ -1,11 +1,5 @@
 import { generateMatrix } from './matrixStates/generators/matrixGenerator';
-import { multiplyMatrices } from './matrixStates/operations/matrixMultiplication';
-
-export interface MatrixData {
-    dimensions: [number, number];
-    values: number[][];
-    id: string;
-}
+import { MatrixData } from './matrixStates/types/matrixData';  // ← ADD THIS LINE
 
 /*
 Given a matrix A and B which is like:
@@ -23,14 +17,12 @@ export function createMatrices(A: [number, number], B: [number, number]) {
     console.log('✅ Matrix A:', matrixA);
     console.log('✅ Matrix B:', matrixB);
     
-
-
+    // Matri dimensions in matrixData already
     matrixA.id = "A"
-    matrixA.dimensions = A;
     matrixB.id = "B" 
-    matrixB.dimensions = B;
+
     //TODO: make the answer for the C matrix
-    const matrixC = 
+    const matrixC = multiplyMatrices(matrixA, matrixB);
 
 
     // TODO: Make a  null matrix
