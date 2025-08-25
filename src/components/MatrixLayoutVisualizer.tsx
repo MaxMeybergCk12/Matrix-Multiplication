@@ -1,7 +1,6 @@
 import React, { useMemo } from "react";
 import { createMatrices } from "./matrixOrchestrator";
 import { allocateMatrixSpace } from "./layout";
-import { calculateMatrixStructure } from "./utils/layout/matrixStructure";
 import Tester from "./tester";
 interface MatrixLayoutProps {
     matrixA: [number, number]; // Dimensions like [3, 3]
