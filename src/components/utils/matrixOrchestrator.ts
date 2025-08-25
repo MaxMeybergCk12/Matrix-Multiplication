@@ -10,19 +10,33 @@ Given a matrix A and B which is like:
 A = [3,3]
 B = [3,1]
 
+We output:
+
+A (3×3)                       B (3×1)           C (3×1)
+┌─────┬─────┬─────┐          ┌─────┐           ┌───────┐
+│  7  │  2  │  5  │          │  2  │           │  null │
+├─────┼─────┼─────┤          ├─────┤           ├───────┤
+│  4  │  9  │  1  │    and   │  5  │    and    │  null │
+├─────┼─────┼─────┤          ├─────┤           ├───────┤
+│  3  │  6  │  8  │          │  7  │           │  null │
+└─────┴─────┴─────┘          └─────┘           └───────┘
+
+
 Assume the matrices are compatable by default due to the fact that im hard-coding them
+
+We will find values in C later on. this is mainly used for visualzier which called matrixOrchestration.ts
+
+
 */
 export function createMatrices(A: [number, number], B: [number, number]) {
     const matrixA = generateMatrix(A)
 
     const matrixB = generateMatrix(B)
+    const matrixC = nullMatrix([A[0], B[1]]);
+
 
     console.log('✅ Matrix A:', matrixA);
     console.log('✅ Matrix B:', matrixB);
-
-    //TODO: make the answer for the C matrix
-
-    const matrixC = nullMatrix([A[0], B[1]]);
 
 
     // TODO: Make a  null matrix
@@ -49,14 +63,14 @@ function generateMatrix(dimensions: [number, number]): MatrixData {
     
     const values: number[][] = [];
     for (let row = 0; row < rows; row++) {
-      values[row] = [];
-      for (let col = 0; col < cols; col++) {
-        values[row][col] = Math.floor(Math.random() * 9) + 1; // ← Direct random 1-9
-      }
+        values[row] = [];
+        for (let col = 0; col < cols; col++) {
+            values[row][col] = Math.floor(Math.random() * 9) + 1; // ← Direct random 1-9
+        }
     }
     
     return { 
-      dimensions, 
-      values,
+        dimensions, 
+        values,
     };
 }
