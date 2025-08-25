@@ -1,3 +1,10 @@
+/*
+
+This is for laying out the CSS dmensionf for th ematrices so that it fits any screen, for nto its 500/500 due to hwo the screen workas atm
+But for other screen sizes the template can adapt, modifyinf App.jsx
+
+*/
+
 export function allocateMatrixSpace(
     dimA: [number, number],
     dimB: [number, number],
