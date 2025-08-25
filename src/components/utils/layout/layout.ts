@@ -37,30 +37,6 @@ function calculateSymbolWidths(availableWidth: number) {
   };
 }
 
-// Allocate matrix widths based on column counts
-function allocateMatrixWidths(matrixA: MatrixInput, matrixB: MatrixInput, availableWidth: number) {
-  const [aRows, aCols] = matrixA;
-  const [bRows, bCols] = matrixB;
-  const { cRows, cCols } = calculateMatrixCDimensions(matrixA, matrixB);
-  
-  const { totalSymbolWidth, remainingWidth } = calculateSymbolWidths(availableWidth);
-  
-  // Calculate total columns for all matrices (excluding symbols)
-  const totalColumns = aCols + bCols + cCols;
-  
-  // Allocate width proportionally based on actual column counts
-  // This gives us the most accurate visual representation
-  const matrixAWidth = (aCols / totalColumns) * remainingWidth;
-  const matrixBWidth = (bCols / totalColumns) * remainingWidth;
-  const matrixCWidth = (cCols / totalColumns) * remainingWidth;
-  
-  return {
-    matrixA: { width: matrixAWidth, height: 0 },
-    matrixB: { width: matrixBWidth, height: 0 },
-    matrixC: { width: matrixCWidth, height: 0 },
-    symbolWidth: 40
-  };
-}
 
 // ===== MAIN FUNCTION =====
 function allocateMatrixSpace(
