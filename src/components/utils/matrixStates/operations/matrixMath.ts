@@ -1,20 +1,12 @@
 // Matrix Math Operations
 // Handles matrix multiplication and other mathematical operations
 
-import { MatrixData, MatrixOperationResult } from '../types';
+import { MatrixData} from '../types';
 
 // Multiply two matrices
-export function multiplyMatrices(matrixA: MatrixData, matrixB: MatrixData): MatrixOperationResult {
+export function multiplyMatrices(matrixA: MatrixData, matrixB: MatrixData): MatrixData {
   const [aRows, aCols] = matrixA.dimensions;
   const [bRows, bCols] = matrixB.dimensions;
-  
-  // Check if matrices can be multiplied
-  if (aCols !== bRows) {
-    return {
-      success: false,
-      error: `Cannot multiply ${aRows}×${aCols} matrix with ${bRows}×${bCols} matrix. Column count of A must equal row count of B.`
-    };
-  }
   
   // Initialize result matrix
   const resultValues: number[][] = [];
@@ -38,28 +30,5 @@ export function multiplyMatrices(matrixA: MatrixData, matrixB: MatrixData): Matr
     id: `result_${Date.now()}`
   };
   
-  return {
-    success: true,
-    result: resultMatrix
-  };
-}
-
-// Validate matrix values (ensure they're within 0-9 range)
-export function validateMatrix(matrix: MatrixData): { isValid: boolean; errors: string[] } {
-  const errors: string[] = [];
-  const [rows, cols] = matrix.dimensions;
-  
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < cols; j++) {
-      const value = matrix.values[i][j];
-      if (value < 0 || value > 9) {
-        errors.push(`Value at position [${i}][${j}] (${value}) is outside valid range [0-9]`);
-      }
-    }
-  }
-  
-  return {
-    isValid: errors.length === 0,
-    errors
-  };
+  return resultMatrix;
 }
