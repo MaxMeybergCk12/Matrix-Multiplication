@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import { createMatrices } from "./matrixOrchestrator";
 import { allocateMatrixSpace } from "./layout";
 import Tester from "./tester";
+import BottomLeft from "./bottomLeft";
 
 
 interface MatrixLayoutProps {
@@ -17,7 +18,10 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
   matrixB,
   totalWidth,
   totalHeight,
+  currentStep,
 }) => {
+
+  
   // Step 1: Generate matrices only when dimensions change
   const matrices = useMemo(() => createMatrices(matrixA, matrixB), [matrixA, matrixB]);
 
@@ -41,22 +45,25 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
             <Tester layout={layout} matrices={matrices}/>
         </div>
         
-        {/* Bottom Half - TODO Later */}
-        <div style={{ height: totalHeight / 2, backgroundColor: 'lightgray' }}>
+        {/* Bottom Half - Vector multiplication and results */}
+        <div style={{ height: totalHeight / 2, display: 'flex' }}>
             {/* Left: Vector multiplication */}
-          <div style={{ width: totalWidth / 2 }}>
-              <BottomLeft 
-                  matrixA={matrices.matrixA} 
-                  matrixB={matrices.matrixB} 
-                  currentStep={currentStep}
-                  totalWidth={totalWidth / 2}  // ← Half of top half width
-                  totalHeight={totalHeight / 2} // ← Half of total height
-              />
-          </div>
-          {/* Right: Result display */}
-          <div style={{ width: totalWidth / 2 }}>
-              {/* Result content */}
-          </div>
+            <div style={{ width: totalWidth / 2 }}>
+                <BottomLeft 
+                    matrixA={matrices.matrixA} 
+                    matrixB={matrices.matrixB} 
+                    matrixC={matrices.matrixC}
+                    currentStep={currentStep}
+                    totalWidth={totalWidth / 2}
+                    totalHeight={totalHeight / 2}
+                />
+            </div>
+            {/* Right: Result display */}
+            <div style={{ width: totalWidth / 2, backgroundColor: 'lightgray' }}>
+                <div className="p-4 text-center">
+                    <p>Result for step {currentStep}</p>
+                </div>
+            </div>
         </div>
     </div>
 );
