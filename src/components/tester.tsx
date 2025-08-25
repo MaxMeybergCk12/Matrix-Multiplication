@@ -1,11 +1,13 @@
 import React from 'react';
 import '../index.css'; // ← IMPORTANT: Import your custom CSS
+import MatrixRenderer from './MatrixRenderer';
 
 interface TesterProps {
     layout: any;
+    matrices: any;
 }
 
-const Tester: React.FC<TesterProps> = ({ layout }) => {
+const Tester: React.FC<TesterProps> = ({ layout, matrices}) => {
     const totalGridWidth = (
         layout.brackets.width * 6 + layout.matrixA.width + layout.matrixB.width + 
         layout.matrixC.width + layout.symbols.x.width + layout.symbols.equals.width
@@ -39,8 +41,12 @@ const Tester: React.FC<TesterProps> = ({ layout }) => {
                 <div className="matrix-bracket" style={{ height: layout.matrixA.height }}>[</div>
 
                 {/* Column 2: Matrix A */}
-                <div className="matrix-box bg-blue-200 border-blue-500" style={{ height: layout.matrixA.height }}>
-                    A ({layout.matrixA.width}×{layout.matrixA.height})
+                <div style={{ height: layout.matrixA.height }}>
+                    <MatrixRenderer 
+                        matrixData={matrices.matrixA} 
+                        layout={layout.matrixA}
+                        matrixType="A"
+                    />
                 </div>
 
                 {/* Column 3: Right Bracket A */}

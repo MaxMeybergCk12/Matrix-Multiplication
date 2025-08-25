@@ -2,6 +2,8 @@ import React, { useMemo } from "react";
 import { createMatrices } from "./matrixOrchestrator";
 import { allocateMatrixSpace } from "./layout";
 import Tester from "./tester";
+
+
 interface MatrixLayoutProps {
     matrixA: [number, number]; // Dimensions like [3, 3]
     matrixB: [number, number]; // Dimensions like [3, 3]
@@ -35,7 +37,7 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
     <div>
         {/* Top Half - Contains Tester */}
         <div style={{ height: totalHeight / 2 }}>
-            <Tester layout={layout} />
+            <Tester layout={layout} matrices={matrices}/>
         </div>
         
         {/* Bottom Half - TODO Later */}
