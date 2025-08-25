@@ -22,7 +22,11 @@ const BottomLeft: React.FC<BottomLeftProps> = ({
         totalWidth,
         totalHeight
     ), [vectorU.length, vectorV.length, totalWidth, totalHeight]);
-    
+
+    console.log('Vector Layout:', vectorLayout);
+    console.log('Vector U dimensions:', [1, vectorU.length]);
+    console.log('Vector V dimensions:', [vectorV.length, 1]);
+
     return (
         <div className="p-4">
             <h3 className="text-lg font-bold mb-4">Vector Multiplication</h3>

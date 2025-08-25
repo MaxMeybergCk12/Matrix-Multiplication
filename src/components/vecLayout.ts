@@ -26,8 +26,20 @@ export function allocateVectorSpace(
     const v_h = Math.floor((v_w / vCols) * vRows);
 
     return {
-        vectorU: { dimensions: dimU, width: u_w, height: u_h, cellWidth: u_w/ uCols, cellHeight: u_h/ uRows},
-        vectorV: { dimensions: dimV, width: v_w, height: v_h, cellWidth: v_w/ vCols, cellHeight: v_h/ vRows},
+        vectorU: { 
+            dimensions: dimU, 
+            width: u_w, 
+            height: u_h, 
+            cellWidth: u_w / uCols,    // ← Added this
+            cellHeight: u_h / uRows    // ← Added this
+        },
+        vectorV: { 
+            dimensions: dimV, 
+            width: v_w, 
+            height: v_h, 
+            cellWidth: v_w / vCols,    // ← Added this
+            cellHeight: v_h / vRows    // ← Added this
+        },
         symbol: { width: SYMBOL_WIDTH },
         brackets: { width: BRACKET_WIDTH, height: BRACKET_HEIGHT },
         spacing: { elementGap: ELEMENT_SPACING, totalFixedWidth, availableWidth }
