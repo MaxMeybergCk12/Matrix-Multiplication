@@ -23,10 +23,14 @@ export function createMatrices(A: [number, number], B: [number, number]) {
     console.log('✅ Matrix A:', matrixA);
     console.log('✅ Matrix B:', matrixB);
     
-    matrixB.id = "B" 
-    matrixA.id = "A"
 
+
+    matrixA.id = "A"
+    matrixA.dimensions = A;
+    matrixB.id = "B" 
+    matrixB.dimensions = B;
     //TODO: make the answer for the C matrix
+    const matrixC = 
 
 
     // TODO: Make a  null matrix
