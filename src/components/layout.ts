@@ -6,55 +6,37 @@ export function allocateMatrixSpace(
     totalHeight: number,
 ) {
     // Fixed spacing requirements
-    const ELEMENT_SPACING = 5;
-    const TOTAL_FIXED_SPACING = 20;
-    const SYMBOL_WIDTH = 20;
+    const ELEMENT_SPACING = 3;           // 3px between elements
+    const SYMBOL_WIDTH = 20;             // × and = symbols
+    const BRACKET_WIDTH = 10;            // Left and right brackets
+    const BRACKET_HEIGHT = totalHeight * 0.8;  // 80% of total height
+    
+    // Calculate total fixed space
+    const totalFixedWidth = (BRACKET_WIDTH * 6) + (SYMBOL_WIDTH * 2) + (ELEMENT_SPACING * 10);
+    const availableWidth = totalWidth - totalFixedWidth;
 
-    // Calculate available width for the 3 matrices
-    const width = totalWidth - TOTAL_FIXED_SPACING - SYMBOL_WIDTH * 2;
-
-    // Extract dimensions
+    // Matrix dimensions
     const [aRows, aCols] = dimA;
     const [bRows, bCols] = dimB;
     const [cRows, cCols] = dimC;
 
-    // Total columns across all matrices
     const totalColumns = aCols + bCols + cCols;
 
-    // Distribute width proportionally based on column count
-    const a_w = Math.floor((width * aCols) / totalColumns);
-    const b_w = Math.floor((width * bCols) / totalColumns);
-    const c_w = Math.floor((width * cCols) / totalColumns);
+    // Matrix sizes
+    const a_w = Math.floor((availableWidth * aCols) / totalColumns);
+    const b_w = Math.floor((availableWidth * bCols) / totalColumns);
+    const c_w = Math.floor((availableWidth * cCols) / totalColumns);
 
-    // Calculate height to maintain aspect ratio
     const a_h = Math.floor((a_w / aCols) * aRows);
     const b_h = Math.floor((b_w / bCols) * bRows);
     const c_h = Math.floor((c_w / cCols) * cRows);
 
     return {
-        matrixA: {
-            dimensions: dimA,
-            width: a_w,
-            height: a_h,
-        },
-        matrixB: {
-            dimensions: dimB,
-            width: b_w,
-            height: b_h,
-        },
-        matrixC: {
-            dimensions: dimC,
-            width: c_w,
-            height: c_h,
-        },
-        symbols: {
-            multiply: { width: SYMBOL_WIDTH },
-            equals: { width: SYMBOL_WIDTH },
-        },
-        spacing: {
-            elementGap: ELEMENT_SPACING,
-            totalFixedSpacing: TOTAL_FIXED_SPACING,
-            width: width,
-        },
+        matrixA: { dimensions: dimA, width: a_w, height: a_h },
+        matrixB: { dimensions: dimB, width: b_w, height: b_h },
+        matrixC: { dimensions: dimC, width: c_w, height: c_h },
+        symbols: { x: { width: 20 }, equals: { width: 20 } },
+        brackets: { width: BRACKET_WIDTH, height: BRACKET_HEIGHT },
+        spacing: { elementGap: ELEMENT_SPACING, totalFixedWidth, availableWidth }
     };
 }

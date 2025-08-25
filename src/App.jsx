@@ -60,9 +60,12 @@ function App() {
             {/* ================================================= */}
 
             {current_step === 1 && (
+                
+
+                // Then somewhere in your JSX:
                 <MatrixLayoutVisualizer
-                    matrixA={[3, 3]}
-                    matrixB={[3, 3]}
+                    matrixA={[3, 2]}
+                    matrixB={[2, 3]}
                     totalWidth={484}
                     totalHeight={404}
                 />

@@ -1,58 +1,38 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { createMatrices } from "./matrixOrchestrator";
 import { allocateMatrixSpace } from "./layout";
 import { calculateMatrixStructure } from "./utils/layout/matrixStructure";
-
+import Tester from "./tester";
 interface MatrixLayoutProps {
     matrixA: [number, number]; // Dimensions like [3, 3]
     matrixB: [number, number]; // Dimensions like [3, 3]
     totalWidth: number;
     totalHeight: number;
-    margins: number;
 }
 
 const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
-    matrixA,
-    matrixB,
-    totalWidth,
-    totalHeight,
+  matrixA,
+  matrixB,
+  totalWidth,
+  totalHeight,
 }) => {
-    // Step 1: Generate full matrices from dimensions
-    const matrices = createMatrices(matrixA, matrixB);
+  // Step 1: Generate matrices only when dimensions change
+  const matrices = useMemo(() => createMatrices(matrixA, matrixB), [matrixA, matrixB]);
 
-    // Step 2: Calculate CSS space allocation using existing helpers
-    const layout = allocateMatrixSpace(
-        matrices.matrixA.dimensions,
-        matrices.matrixB.dimensions,
-        matrices.matrixC.dimensions,
-        totalWidth,
-        totalHeight,
-    );
+  // Step 2: Calculate layout only when matrices change
+  const layout = useMemo(() => allocateMatrixSpace(
+      matrices.matrixA.dimensions,
+      matrices.matrixB.dimensions,
+      matrices.matrixC.dimensions,
+      totalWidth,
+      totalHeight,
+  ), [matrices, totalWidth, totalHeight]);
 
-    // Step 3: Calculate CSS positioning for each matrix
-    const matrixAStructure = calculateMatrixStructure(
-        matrices.matrixA.dimensions,
-        { width: layout.matrixA.width, height: layout.matrixA.height },
-    );
-
-    // Step 4: Simple return to test everything works
-    return (
-        <div className="p-4 bg-blue-50 rounded">
-            <h2>Matrix Layout Visualizer</h2>
-            <p>
-                ✅ Matrices generated: {matrices.matrixA.dimensions[0]}×
-                {matrices.matrixA.dimensions[1]}
-            </p>
-            <p>
-                📐 CSS Layout calculated: {layout.matrixA.width}×
-                {layout.matrixA.height}
-            </p>
-            <p>🏗️ Matrix structure ready</p>
-        </div>
-    );
+  // Step 3: Call Tester
+  return <Tester layout={layout} />;
 };
 
-//------------
+export default MatrixLayoutVisualizer;
 
 // interface MatrixLayoutVisualizerProps {
 //   matrixA: [number, number];
