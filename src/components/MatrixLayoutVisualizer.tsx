@@ -1,10 +1,27 @@
-// src/components/MatrixLayoutVisualizer.tsx
-// Visual test component - shows colored boxes for matrix spaces
-// NOTE: This is currently just a layout visualizer - no number inputs yet
 
 import React from 'react';
-import { allocateMatrixSpace } from './layout';
-import { calculateMatrixStructure } from './matrixStructure';
+import {MatrixData, createMatrices} from './matrixOrchestrator'
+import { allocateMatrixSpace } from './utils/layout/layout';
+import { calculateMatrixStructure } from './utils/layout/matrixStructure';
+
+interface MatrixLayoutProps {
+  matrixA: [number, number];    // Dimensions like [3, 3]
+  matrixB: [number, number];    // Dimensions like [3, 3]
+  totalWidth: number;
+  totalHeight: number;
+  margins: number;
+}
+
+
+
+const MatrixLayoutVisualizer: React.FC<MatrixProps> = ({A, B, C}) => {
+  const matrices = createMatrices(matrixA, matrixB);
+
+
+}
+
+//------------
+
 
 interface MatrixLayoutVisualizerProps {
   matrixA: [number, number];
