@@ -67,10 +67,12 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
         <div style={{ height: totalHeight / 2, display: 'flex' }}>
             {/* Left: Vector multiplication */}
             <div style={{ width: totalWidth / 2 }}>
-                <BottomLeft 
-                    totalWidth={totalWidth / 2}
-                    totalHeight={totalHeight / 2}
-                />
+            <BottomLeft 
+                vectorU={vectorU}               // ✅ The extracted row vector
+                vectorV={vectorV}               // ✅ The extracted column vector
+                totalWidth={totalWidth / 2}     // ✅ Layout width
+                totalHeight={totalHeight / 2}   // ✅ Layout height
+            />
             </div>
             {/* Right: Result display */}
             <div style={{ width: totalWidth / 2, backgroundColor: 'lightgray' }}>
