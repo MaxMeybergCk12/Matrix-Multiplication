@@ -25,8 +25,8 @@ const MatrixRenderer: React.FC<MatrixRendererProps> = ({
         display: 'grid',
         gridTemplateColumns: `repeat(${cols}, ${layout.cellWidth}px)`, // Creates 3 columns for 2×3 matrix
         gridTemplateRows: `repeat(${rows}, ${layout.cellHeight}px)`,   // Creates 2 rows for 2×3 matrix
-        
     };
+
     // Generate cells in grid order (row by row, column by column)
     const cells: any[] = [];
     for (let row = 0; row < rows; row++) {
@@ -36,7 +36,7 @@ const MatrixRenderer: React.FC<MatrixRendererProps> = ({
             let cellClasses = 'bg-white border-gray-300 flex items-center justify-center text-sm font-bold';
             
             if (matrixType === 'C' && value === null) {
-                cellClasses = 'bg-yellow-100 border-yellow-400 text-yellow-800';
+                cellClasses = 'bg-yellow-100 border-yellow-400 flex items-center justify-center text-sm font-bold text-yellow-800';
             }
             
             cells.push(
