@@ -20,10 +20,29 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
   totalHeight,
   currentStep,
 }) => {
+  
 
   
   // Step 1: Generate matrices only when dimensions change
   const matrices = useMemo(() => createMatrices(matrixA, matrixB), [matrixA, matrixB]);
+
+  // Helper function - uses matrices from parent scope
+  const getVectors = (i: number, j: number) => {
+    const vectorU = matrices.matrixA.values[i];
+    const vectorV = matrices.matrixB.values.map(row => row[j]);
+    return { vectorU, vectorV };
+  };
+
+  // Calculate positions
+  const numColumns = matrices.matrixB.dimensions[1];
+  const i = Math.floor(currentStep / numColumns);
+  const j = currentStep % numColumns;
+
+  // Get vectors
+  const { vectorU, vectorV } = getVectors(i, j);
+  console.log(vectorU);
+  console.log(vectorV);
+
 
   // Step 2: Calculate layout only when matrices change
   const layout = useMemo(() => allocateMatrixSpace(
@@ -34,8 +53,7 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
       totalHeight,
   ), [matrices, totalWidth, totalHeight]);
 
-
-
+   
 
   // Step 3: Call Tester
   return (
@@ -50,10 +68,6 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
             {/* Left: Vector multiplication */}
             <div style={{ width: totalWidth / 2 }}>
                 <BottomLeft 
-                    matrixA={matrices.matrixA} 
-                    matrixB={matrices.matrixB} 
-                    matrixC={matrices.matrixC}
-                    currentStep={currentStep}
                     totalWidth={totalWidth / 2}
                     totalHeight={totalHeight / 2}
                 />
