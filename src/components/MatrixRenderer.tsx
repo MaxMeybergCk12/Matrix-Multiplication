@@ -19,6 +19,17 @@ const MatrixRenderer: React.FC<MatrixRendererProps> = ({
 }) => {
     const [rows, cols] = matrixData.dimensions;
 
+    // Add this debug line to see the actual data:
+    console.log(`Matrix ${matrixType} Debug:`, {
+        dimensions: matrixData.dimensions,
+        values: matrixData.values,
+        valuesLength: matrixData.values.length,
+        firstRow: matrixData.values[0],
+        rows,
+        cols
+    });
+
+   
     // CSS Grid setup - this creates the actual grid structure
     const gridStyle = {
         display: 'grid',
@@ -30,6 +41,14 @@ const MatrixRenderer: React.FC<MatrixRendererProps> = ({
         border: '2px solid #374151',
         borderRadius: '4px'
     };
+
+    console.log(`Matrix ${matrixType} Grid Debug:`, {
+        gridStyle,
+        cellWidth: layout.cellWidth,
+        cellHeight: layout.cellHeight,
+        cols,
+        rows
+    });
 
     // Generate cells in grid order (row by row, column by column)
     const cells: any[] = [];

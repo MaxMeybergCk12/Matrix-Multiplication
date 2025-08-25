@@ -16,7 +16,7 @@ export function allocateMatrixSpace(
     const ELEMENT_SPACING = 3;           // 3px between elements
     const SYMBOL_WIDTH = 20;             // × and = symbols
     const BRACKET_WIDTH = 10;            // Left and right brackets
-    const BRACKET_HEIGHT = totalHeight * 0.8;  // 80% of total height
+    const BRACKET_HEIGHT = totalHeight;  // 80% of total height
     
     // Calculate total fixed space
     const totalFixedWidth = (BRACKET_WIDTH * 6) + (SYMBOL_WIDTH * 2) + (ELEMENT_SPACING * 10);
@@ -39,9 +39,9 @@ export function allocateMatrixSpace(
     const c_h = Math.floor((c_w / cCols) * cRows);
 
     return {
-        matrixA: { dimensions: dimA, width: a_w, height: a_h },
-        matrixB: { dimensions: dimB, width: b_w, height: b_h },
-        matrixC: { dimensions: dimC, width: c_w, height: c_h },
+        matrixA: { dimensions: dimA, width: a_w, height: a_h, cellWidth: a_w/ aCols, cellHeight: a_h/ aRows},
+        matrixB: { dimensions: dimB, width: b_w, height: b_h, cellWidth: b_w/ bCols, cellHeight: b_h/ bRows},
+        matrixC: { dimensions: dimC, width: c_w, height: c_h, cellWidth: c_w/ cCols, cellHeight: c_h/ cRows},
         symbols: { x: { width: 20 }, equals: { width: 20 } },
         brackets: { width: BRACKET_WIDTH, height: BRACKET_HEIGHT },
         spacing: { elementGap: ELEMENT_SPACING, totalFixedWidth, availableWidth }
