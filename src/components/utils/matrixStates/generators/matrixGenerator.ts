@@ -1,44 +1,20 @@
-// Matrix Generator
-// Creates random matrices with specified dimensions and value ranges
+// Matrix Generator - Ultra Ultra Ultra Simplified
+import { MatrixData } from '../types';
 
-import { MatrixData, MatrixGenerationOptions, DEFAULT_MATRIX_OPTIONS } from '../types';
-
-// Generate a random number between min and max (inclusive)
-function generateRandomNumber(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-
-// Generate a matrix with random values
-export function generateMatrix(
-  dimensions: [number, number], 
-  options: MatrixGenerationOptions = {}
-): MatrixData {
+// Generate a matrix with random values (for when we need actual values)
+export function generateMatrix(dimensions: [number, number]): MatrixData {
   const [rows, cols] = dimensions;
-  const opts = { ...DEFAULT_MATRIX_OPTIONS, ...options };
   
-  // Create 2D array with random values
   const values: number[][] = [];
-  
   for (let row = 0; row < rows; row++) {
     values[row] = [];
     for (let col = 0; col < cols; col++) {
-      values[row][col] = generateRandomNumber(opts.minValue!, opts.maxValue!);
+      values[row][col] = Math.floor(Math.random() * 9) + 1; // ← Direct random 1-9
     }
   }
   
-  return {
-    dimensions,
+  return { 
+    dimensions, 
     values,
   };
-}
-
-
-// Get the resulting matrix dimensions from multiplication
-export function getResultMatrixDimensions(matrixA: [number, number], matrixB: [number, number]): [number, number] {
-  const [aRows, aCols] = matrixA;
-  const [bRows, bCols] = matrixB;
-  
-  // Result matrix: [aRows, bCols]
-  return [aRows, bCols];
 }
