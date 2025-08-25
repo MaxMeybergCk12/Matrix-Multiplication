@@ -6,6 +6,6 @@ import { MatrixInput } from '../../../types';
 // A matrix with actual numerical values (1-9)
 export interface MatrixData {
   dimensions: MatrixInput;  // [rows, cols]
-  values: number[][];       // 2D array of numbers
+  values: (number | null)[][];       // 2D array of numbers
   id?: string;               // Unique identifier
 }

@@ -23,9 +23,13 @@ export function createMatrices(A: [number, number], B: [number, number]) {
 
     //TODO: make the answer for the C matrix
     const matrixC = multiplyMatrices(matrixA, matrixB);
+    matrixC.id = "Answer"
+
+    const matrixC2 = nullMatrix(matrixC);
 
 
     // TODO: Make a  null matrix
+    return { matrixA, matrixB, matrixC, matrixC2}
 
 
 }
@@ -44,7 +48,7 @@ function multiplyMatrices(matrixA: MatrixData, matrixB: MatrixData): MatrixData 
       for (let j = 0; j < bCols; j++) {
         let sum = 0;
         for (let k = 0; k < aCols; k++) {
-          sum += matrixA.values[i][k] * matrixB.values[k][j];
+          sum += (matrixA.values[i][k] as number) * (matrixB.values[k][j] as number);
         }
         resultValues[i][j] = sum;
       }
@@ -54,10 +58,23 @@ function multiplyMatrices(matrixA: MatrixData, matrixB: MatrixData): MatrixData 
     const resultMatrix: MatrixData = {
       dimensions: [aRows, bCols],
       values: resultValues,
-      id: `result_${Date.now()}`
+      id: "C"
     };
     
     return resultMatrix;
+}
+
+function nullMatrix(matrix: MatrixData): MatrixData {
+    // Create a copy with null values
+    const nullValues = matrix.values.map(row => 
+        row.map(() => null)
+    );
+    
+    return {
+        dimensions: matrix.dimensions,
+        values: nullValues,
+        id: matrix.id + "C"
+    };
 }
 
 
