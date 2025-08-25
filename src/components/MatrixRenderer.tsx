@@ -35,11 +35,7 @@ const MatrixRenderer: React.FC<MatrixRendererProps> = ({
         display: 'grid',
         gridTemplateColumns: `repeat(${cols}, ${layout.cellWidth}px)`, // Creates 3 columns for 2×3 matrix
         gridTemplateRows: `repeat(${rows}, ${layout.cellHeight}px)`,   // Creates 2 rows for 2×3 matrix
-        gap: '1px',
-        backgroundColor: '#e5e7eb',
-        padding: '2px',
-        border: '2px solid #374151',
-        borderRadius: '4px'
+        
     };
 
     console.log(`Matrix ${matrixType} Grid Debug:`, {
@@ -79,10 +75,6 @@ const MatrixRenderer: React.FC<MatrixRendererProps> = ({
 
     return (
         <div className="relative">
-            <div className="absolute -top-6 left-0 text-xs font-bold text-gray-600">
-                Matrix {matrixType}
-            </div>
-            
             {/* This div creates the actual grid structure */}
             <div style={gridStyle}>
                 {cells}

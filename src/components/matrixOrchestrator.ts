@@ -32,10 +32,7 @@ export function createMatrices(A: [number, number], B: [number, number]) {
 
     const matrixB = generateMatrix(B);
     const matrixC = nullMatrix([A[0], B[1]]);
-
-    console.log("✅ Matrix A:", matrixA);
-    console.log("✅ Matrix B:", matrixB);
-
+    
     // TODO: Make a  null matrix
     return { matrixA, matrixB, matrixC };
 }

@@ -21,7 +21,7 @@ const Tester: React.FC<TesterProps> = ({ layout, matrices}) => {
     const c_extra = Math.floor((remainingWidth * layout.matrixC.width) / (layout.matrixA.width + layout.matrixB.width + layout.matrixC.width));
 
     return (
-        <div className="relative border-2 border-gray-400 bg-gray-100" style={{ width: 484, height: 202 }}>
+        <div className="relative border-2 border-gray-400 bg-gray-100" style={{ width: availableWidth, height: 202 }}>
             <div className="grid grid-cols-11 items-center" style={{
                 gridTemplateColumns: `
                     ${layout.brackets.width}px
@@ -33,7 +33,7 @@ const Tester: React.FC<TesterProps> = ({ layout, matrices}) => {
                     ${layout.brackets.width}px
                     ${layout.symbols.equals.width}px
                     ${layout.brackets.width}px
-                    ${layout.matrixC.width + c_extra}px
+                    ${layout.matrixC.width}px
                     ${layout.brackets.width}px
                 `
             }}>
@@ -59,8 +59,12 @@ const Tester: React.FC<TesterProps> = ({ layout, matrices}) => {
                 <div className="matrix-bracket" style={{ height: layout.matrixB.height }}>[</div>
 
                 {/* Column 6: Matrix B */}
-                <div className="matrix-box bg-purple-200 border-purple-500" style={{ height: layout.matrixB.height }}>
-                    B ({layout.matrixB.width}×{layout.matrixB.height})
+                <div style={{ height: layout.matrixB.height }}>
+                    <MatrixRenderer 
+                        matrixData={matrices.matrixB} 
+                        layout={layout.matrixB}
+                        matrixType="B"
+                    />
                 </div>
 
                 {/* Column 7: Right Bracket B */}
@@ -73,8 +77,12 @@ const Tester: React.FC<TesterProps> = ({ layout, matrices}) => {
                 <div className="matrix-bracket" style={{ height: layout.matrixC.height }}>[</div>
 
                 {/* Column 10: Matrix C */}
-                <div className="matrix-box bg-red-200 border-red-500" style={{ height: layout.matrixC.height }}>
-                    C ({layout.matrixC.width}×{layout.matrixC.height})
+                <div style={{ height: layout.matrixC.height }}>
+                    <MatrixRenderer 
+                        matrixData={matrices.matrixC} 
+                        layout={layout.matrixC}
+                        matrixType="C"
+                    />
                 </div>
 
                 {/* Column 11: Right Bracket C */}
