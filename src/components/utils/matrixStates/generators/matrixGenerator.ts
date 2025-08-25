@@ -33,26 +33,6 @@ export function generateMatrix(
   };
 }
 
-// Generate a pair of matrices for multiplication
-export function generateMatrixPair(
-  matrixA: [number, number],
-  matrixB: [number, number],
-  options: MatrixGenerationOptions = {}
-): { matrixA: MatrixData; matrixB: MatrixData } {
-  return {
-    matrixA: generateMatrix(matrixA, options),
-    matrixB: generateMatrix(matrixB, options)
-  };
-}
-
-// Validate that two matrices can be multiplied
-export function canMultiply(matrixA: [number, number], matrixB: [number, number]): boolean {
-  const [aRows, aCols] = matrixA;
-  const [bRows, bCols] = matrixB;
-  
-  // For multiplication: A cols must equal B rows
-  return aCols === bRows;
-}
 
 // Get the resulting matrix dimensions from multiplication
 export function getResultMatrixDimensions(matrixA: [number, number], matrixB: [number, number]): [number, number] {
