@@ -17,21 +17,7 @@ const BottomRight: React.FC<BottomRightProps> = ({
     onMatrixCUpdate
 }) => {
     const [dotProductResult, setDotProductResult] = useState<number | null>(null);
-    const [showCalculation, setShowCalculation] = useState(false);
     const [currentAnimationStep, setCurrentAnimationStep] = useState(0);
-
-    useEffect(() => {
-        if (vectorU.length > 0 && vectorV.length > 0) {
-            setShowCalculation(true);
-            setCurrentAnimationStep(0);
-            calculateDotProduct();
-            
-            // Reset animation after a short delay to ensure it starts fresh
-            setTimeout(() => {
-                setCurrentAnimationStep(0);
-            }, 100);
-        }
-    }, [vectorU, vectorV]);
 
     const calculateDotProduct = () => {
         let result = 0;
@@ -39,9 +25,40 @@ const BottomRight: React.FC<BottomRightProps> = ({
             result += vectorU[i] * vectorV[i];
         }
         setDotProductResult(result);
+    };
 
-        // Update Matrix C
+    // Simple effect that resets animation when step changes
+    useEffect(() => {
+        if (vectorU.length > 0 && vectorV.length > 0) {
+            setCurrentAnimationStep(0);
+            calculateDotProduct();
+            
+            const totalSteps = vectorU.length * 6 + 2;
+            const timer = setInterval(() => {
+                setCurrentAnimationStep(prev => {
+                    if (prev >= totalSteps - 1) {
+                        clearInterval(timer);
+                        // Update matrix C immediately when animation completes
+                        updateMatrixC();
+                        return totalSteps - 1;
+                    }
+                    return prev + 1;
+                });
+            }, 600);
+
+            return () => clearInterval(timer);
+        }
+    }, [currentStep]); // Only depend on currentStep changes
+
+    // Simple function to update matrix C
+    const updateMatrixC = () => {
         if (onMatrixCUpdate) {
+            // Calculate result inline instead of relying on state
+            let result = 0;
+            for (let i = 0; i < vectorU.length; i++) {
+                result += vectorU[i] * vectorV[i];
+            }
+            
             const rows = matrixC.dimensions[0];
             const cols = matrixC.dimensions[1];
             const currentRow = Math.floor((currentStep - 1) / cols);
@@ -59,25 +76,6 @@ const BottomRight: React.FC<BottomRightProps> = ({
             onMatrixCUpdate(updatedMatrixC);
         }
     };
-
-    // Start animation sequence
-    useEffect(() => {
-        if (showCalculation) {
-            const totalSteps = vectorU.length * 6 + 2; // Each pair: 4 elements + final result
-            
-            const timer = setInterval(() => {
-                setCurrentAnimationStep(prev => {
-                    if (prev >= totalSteps - 1) {
-                        clearInterval(timer);
-                        return totalSteps - 1; // Ensure we reach the final step
-                    }
-                    return prev + 1;
-                });
-            }, 600); // Reduced to 600ms for faster completion
-
-            return () => clearInterval(timer);
-        }
-    }, [showCalculation, vectorU.length]);
 
     const renderCalculationSteps = () => {
         const elements: React.ReactElement[] = [];
