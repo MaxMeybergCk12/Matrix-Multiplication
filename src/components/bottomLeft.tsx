@@ -26,37 +26,43 @@ const BottomLeft: React.FC<BottomLeftProps> = ({
     console.log('Vector Layout:', vectorLayout);
     console.log('Vector U dimensions:', [1, vectorU.length]);
     console.log('Vector V dimensions:', [vectorV.length, 1]);
-
     return (
-        <div className="p-4">
-            <h3 className="text-lg font-bold mb-4">Vector Multiplication</h3>
-            
-            {/* Vector U (row from A) */}
-            <div className="mb-4">
-                <p className="text-sm text-gray-600 mb-2">Row from Matrix A:</p>
-                <div className="flex justify-center">
-                    <div className="matrix-bracket">[</div>
-                    {vectorU.map((val, index) => (
-                        <div key={index} className="px-2 py-1 border border-gray-300 bg-blue-100">
-                            {val}
-                        </div>
-                    ))}
-                    <div className="matrix-bracket">]</div>
+        <div className="relative border-2 border-gray-400 bg-gray-100" style={{ width: totalWidth, height: totalHeight }}>
+            <div className="grid grid-cols-7 items-center" style={{
+                gridTemplateColumns: `
+                    ${vectorLayout.brackets.width}px      // 1. Left bracket U
+                    ${vectorLayout.vectorU.width}px       // 2. Vector U
+                    ${vectorLayout.brackets.width}px      // 3. Right bracket U
+                    ${vectorLayout.symbol.width}px        // 4. × symbol
+                    ${vectorLayout.brackets.width}px      // 5. Left bracket V
+                    ${vectorLayout.vectorV.width}px       // 6. Vector V
+                    ${vectorLayout.brackets.width}px      // 7. Right bracket V
+                `
+            }}>
+                {/* Column 1: Left Bracket U */}
+                <div className="matrix-bracket" style={{ height: vectorLayout.vectorU.height }}>[</div>
+    
+                {/* Column 2: Vector U */}
+                <div style={{ height: vectorLayout.vectorU.height }}>
+                    {/* Vector U content */}
                 </div>
-            </div>
-            
-            {/* Vector V (column from B) */}
-            <div className="mb-4">
-                <p className="text-sm text-gray-600 mb-2">Column from Matrix B:</p>
-                <div className="flex flex-col items-center">
-                    <div className="matrix-bracket">[</div>
-                    {vectorV.map((val, index) => (
-                        <div key={index} className="px-2 py-1 border border-gray-300 bg-green-100">
-                            {val}
-                        </div>
-                    ))}
-                    <div className="matrix-bracket">]</div>
+    
+                {/* Column 3: Right Bracket U */}
+                <div className="matrix-bracket" style={{ height: vectorLayout.vectorU.height }}>]</div>
+    
+                {/* Column 4: × Symbol */}
+                <div className="bg-green-200 border-2 border-green-500 flex items-center justify-center text-lg font-bold">×</div>
+    
+                {/* Column 5: Left Bracket V */}
+                <div className="matrix-bracket" style={{ height: vectorLayout.vectorV.height }}>[</div>
+    
+                {/* Column 6: Vector V */}
+                <div style={{ height: vectorLayout.vectorV.height }}>
+                    {/* Vector V content */}
                 </div>
+    
+                {/* Column 7: Right Bracket V */}
+                <div className="matrix-bracket" style={{ height: vectorLayout.vectorV.height }}>]</div>
             </div>
         </div>
     );
