@@ -14,30 +14,42 @@ function App() {
     // 🟢 MODIFY THE SECTION BELOW THIS LINE
     // ==========================================
 
-    const total_steps = 5; // Change me, How many Steps do you want?
+    // Generate random matrix dimensions (1-3 for each dimension)
+    const generateRandomMatrices = () => {
+        const a = Math.floor(Math.random() * 2) + 2; // 1-3
+        const b = Math.floor(Math.random() * 2) + 2; // 1-3
+        const c = Math.floor(Math.random() * 2) + 2; // 1-3
+        
+        return {
+            matrixA: [a, b],
+            matrixB: [b, c],
+            matrixC: [a, c]
+        };
+    };
 
-    const flexi_steps = [
-        {
-            pose: Flexi.excited,
-            message: "Matrix A: 3×3, Matrix B: 3×3, Matrix C: 3×3",
-        },
-        {
-            pose: Flexi.teacher,
-            message: "Matrix A: 2×2, Matrix B: 2×1, Matrix C: 2×1",
-        },
-        {
-            pose: Flexi.thumbs_up,
-            message: "Matrix A: 3×2, Matrix B: 2×3, Matrix C: 3×3",
-        },
-        {
-            pose: Flexi.pointing,
-            message: "Matrix A: 2×1, Matrix B: 1×2, Matrix C: 2×2",
-        },
-        {
-            pose: Flexi.pointing,
-            message: "Matrix A: 1×3, Matrix B: 3×1, Matrix C: 1×1",
-        },
-    ];
+    // Generate matrices once when component mounts
+    const [matrices] = useState(() => generateRandomMatrices());
+    const { matrixA, matrixB, matrixC } = matrices;
+    
+    // Calculate dynamic total_steps based on matrix dimensions
+    const total_steps = matrixC[0] * matrixC[1];
+
+    // Generate dynamic flexi_steps based on matrix dimensions
+    const generateFlexiSteps = () => {
+        const steps = [];
+        
+        // Add steps for each matrix element calculation
+        for (let i = 1; i <= total_steps; i++) {
+            steps.push({
+                pose: Flexi.pointing,
+                message: `Step ${i}: Calculate element ${i}`,
+            });
+        }
+        
+        return steps;
+    };
+    
+    const flexi_steps = generateFlexiSteps();
 
     // ==========================================
     // 🟢 MODIFY THE SECTION ABOVE THIS LINE
@@ -62,8 +74,8 @@ function App() {
             {/*TODO: Random numebr generator for # of steps a = 1-3, b  1-3, c = 1-3, then from there its [a,b] and [b,c*/}
   
             <MatrixLayoutVisualizer
-                matrixA={[2, 1]}
-                matrixB={[2, 3]}
+                matrixA={matrixA}
+                matrixB={matrixB}
                 totalWidth={484}
                 totalHeight={404}
                 currentStep={current_step}
