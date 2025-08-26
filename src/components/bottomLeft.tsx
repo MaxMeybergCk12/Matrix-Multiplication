@@ -7,13 +7,17 @@ interface BottomLeftProps {
     vectorV: number[];        // Column vector from Matrix B
     totalWidth: number;       // Layout width
     totalHeight: number;      // Layout height
+    highlightedRow?: number;  // Row to highlight in vector U
+    highlightedColumn?: number; // Column to highlight in vector V
 }
 
 const BottomLeft: React.FC<BottomLeftProps> = ({ 
     vectorU, 
     vectorV, 
     totalWidth, 
-    totalHeight 
+    totalHeight,
+    highlightedRow,
+    highlightedColumn
 }) => {
 
     // Use vecLayout.ts for consistent spacing and layout
@@ -45,6 +49,7 @@ const BottomLeft: React.FC<BottomLeftProps> = ({
                         matrixData={{ dimensions: [1, vectorU.length], values: [vectorU] }}
                         layout={vectorLayout.vectorU}
                         matrixType="A"
+                        highlightedRow={highlightedRow}
                     />
                 </div>
     
@@ -63,6 +68,7 @@ const BottomLeft: React.FC<BottomLeftProps> = ({
                         matrixData={{ dimensions: [vectorV.length, 1], values: vectorV.map(val => [val]) }}
                         layout={vectorLayout.vectorV}
                         matrixType="B"
+                        highlightedColumn={highlightedColumn}
                     />
                 </div>
     

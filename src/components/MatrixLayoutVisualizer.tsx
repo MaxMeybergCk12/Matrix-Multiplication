@@ -81,6 +81,8 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
                 vectorV={cleanVectorV}               // ✅ The extracted column vector
                 totalWidth={totalWidth / 2}     // ✅ Layout width
                 totalHeight={totalHeight / 2}   // ✅ Layout height
+                highlightedRow={0}
+                highlightedColumn={0}
             />
             </div>
             {/* Right: Result display */}
