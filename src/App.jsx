@@ -61,8 +61,8 @@ function App() {
 
   
             <MatrixLayoutVisualizer
-                matrixA={[1, 3]}
-                matrixB={[3, 2]}
+                matrixA={[2, 1]}
+                matrixB={[1, 2]}
                 totalWidth={484}
                 totalHeight={404}
                 currentStep={current_step}

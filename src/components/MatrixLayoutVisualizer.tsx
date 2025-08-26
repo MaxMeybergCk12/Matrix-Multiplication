@@ -3,7 +3,7 @@ import { createMatrices } from "./matrixOrchestrator";
 import { allocateMatrixSpace } from "./layout";
 import Tester from "./tester";
 import BottomLeft from "./bottomLeft";
-
+import { calculateStepInfo } from './stepCalculator';
 
 interface MatrixLayoutProps {
     matrixA: [number, number]; // Dimensions like [3, 3]
@@ -34,9 +34,8 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
   };
 
   // Calculate positions
-  const numColumns = matrices.matrixB.dimensions[1];
-  const i = Math.floor(currentStep / numColumns);
-  const j = (currentStep - 1) % numColumns;
+  const { i, j, totalSteps } = calculateStepInfo(currentStep, matrices.matrixC);
+  
 
   // Get vectors
   const { vectorU, vectorV } = getVectors(i, j);
