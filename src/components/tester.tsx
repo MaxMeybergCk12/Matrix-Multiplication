@@ -5,10 +5,12 @@ import MatrixRenderer from './MatrixRenderer';
 interface TesterProps {
     layout: any;
     matrices: any;
+    highlightedRow?: number;
+    highlightedColumn?: number;
 }
 
 
-const Tester: React.FC<TesterProps> = ({ layout, matrices}) => {
+const Tester: React.FC<TesterProps> = ({ layout, matrices, highlightedRow, highlightedColumn}) => {
     // Use layout values directly - no calculations needed
     const availableWidth = layout.spacing.totalWidth;
     
@@ -38,6 +40,8 @@ const Tester: React.FC<TesterProps> = ({ layout, matrices}) => {
                         matrixData={matrices.matrixA} 
                         layout={layout.matrixA}
                         matrixType="A"
+                        highlightedRow={highlightedRow}
+                        highlightedColumn={undefined}
                     />
                 </div>
 
@@ -56,6 +60,8 @@ const Tester: React.FC<TesterProps> = ({ layout, matrices}) => {
                         matrixData={matrices.matrixB} 
                         layout={layout.matrixB}
                         matrixType="B"
+                        highlightedRow={undefined}
+                        highlightedColumn={highlightedColumn}
                     />
                 </div>
 
@@ -74,6 +80,8 @@ const Tester: React.FC<TesterProps> = ({ layout, matrices}) => {
                         matrixData={matrices.matrixC} 
                         layout={layout.matrixC}
                         matrixType="C"
+                        highlightedRow={highlightedRow}
+                        highlightedColumn={highlightedColumn}
                     />
                 </div>
 

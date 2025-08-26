@@ -64,7 +64,12 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
     <div>
         {/* Top Half - Contains Tester */}
         <div style={{ height: totalHeight / 2 }}>
-            <Tester layout={layout} matrices={matrices}/>
+            <Tester 
+                layout={layout} 
+                matrices={matrices}
+                highlightedRow={i}
+                highlightedColumn={j}
+            />
         </div>
         
         {/* Bottom Half - Vector multiplication and results */}

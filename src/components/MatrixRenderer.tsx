@@ -10,12 +10,16 @@ interface MatrixRendererProps {
         cellHeight: number;
     };
     matrixType: 'A' | 'B' | 'C';
+    highlightedRow?: number;
+    highlightedColumn?: number;
 }
 
 const MatrixRenderer: React.FC<MatrixRendererProps> = ({ 
     matrixData, 
     layout, 
-    matrixType
+    matrixType,
+    highlightedRow,
+    highlightedColumn
 }) => {
     const [rows, cols] = matrixData.dimensions;
 
@@ -34,6 +38,15 @@ const MatrixRenderer: React.FC<MatrixRendererProps> = ({
             const value = matrixData.values[row][col];
             
             let cellClasses = 'bg-white border-gray-300 flex items-center justify-center text-sm font-bold';
+            
+            // Apply highlighting based on row and column selection
+            if (highlightedRow !== undefined && row === highlightedRow) {
+                // Highlighted row - yellow background
+                cellClasses = 'bg-yellow-200 border-yellow-400 flex items-center justify-center text-sm font-bold text-yellow-800';
+            } else if (highlightedColumn !== undefined && col === highlightedColumn) {
+                // Highlighted column - blue background
+                cellClasses = 'bg-blue-200 border-blue-400 flex items-center justify-center text-sm font-bold text-blue-800';
+            }
             
             if (matrixType === 'C' && value === null) {
                 cellClasses = 'bg-yellow-100 border-yellow-400 flex items-center justify-center text-sm font-bold text-yellow-800';
