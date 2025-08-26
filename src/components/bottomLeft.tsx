@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { allocateVectorSpace } from './vecLayout';
+import MatrixRenderer from './MatrixRenderer';
 
 interface BottomLeftProps {
     vectorU: number[];        // Row vector from Matrix A
@@ -28,23 +29,27 @@ const BottomLeft: React.FC<BottomLeftProps> = ({
     console.log('Vector V dimensions:', [vectorV.length, 1]);
     return (
         <div className="relative border-2 border-gray-400 bg-gray-100" style={{ width: totalWidth, height: totalHeight }}>
-            <div className="grid grid-cols-7 items-center" style={{
+            <div className="grid grid-cols items-center" style={{
                 gridTemplateColumns: `
-                    ${vectorLayout.brackets.width}px      // 1. Left bracket U
-                    ${vectorLayout.vectorU.width}px       // 2. Vector U
-                    ${vectorLayout.brackets.width}px      // 3. Right bracket U
-                    ${vectorLayout.symbol.width}px        // 4. × symbol
-                    ${vectorLayout.brackets.width}px      // 5. Left bracket V
-                    ${vectorLayout.vectorV.width}px       // 6. Vector V
-                    ${vectorLayout.brackets.width}px      // 7. Right bracket V
+                    ${vectorLayout.brackets.width}px      // 10px
+                    ${vectorLayout.vectorU.width}px       // 115px  
+                    ${vectorLayout.brackets.width}px      // 10px
+                    ${vectorLayout.symbol.width}px        // 20px
+                    ${vectorLayout.brackets.width}px      // 10px
+                    ${vectorLayout.vectorV.width}px       // 38px
+                    ${vectorLayout.brackets.width}px      // 10px
                 `
             }}>
                 {/* Column 1: Left Bracket U */}
                 <div className="matrix-bracket" style={{ height: vectorLayout.vectorU.height }}>[</div>
     
                 {/* Column 2: Vector U */}
-                <div style={{ height: vectorLayout.vectorU.height }}>
-                    {/* Vector U content */}
+                <div style={{ width: vectorLayout.vectorU.height }}>
+                    <MatrixRenderer 
+                        matrixData={{ dimensions: [1, vectorU.length], values: [vectorU] }}
+                        layout={vectorLayout.vectorU}
+                        matrixType="A"
+                    />
                 </div>
     
                 {/* Column 3: Right Bracket U */}
@@ -58,7 +63,11 @@ const BottomLeft: React.FC<BottomLeftProps> = ({
     
                 {/* Column 6: Vector V */}
                 <div style={{ height: vectorLayout.vectorV.height }}>
-                    {/* Vector V content */}
+                    <MatrixRenderer 
+                        matrixData={{ dimensions: [vectorV.length, 1], values: vectorV.map(val => [val]) }}
+                        layout={vectorLayout.vectorV}
+                        matrixType="B"
+                    />
                 </div>
     
                 {/* Column 7: Right Bracket V */}

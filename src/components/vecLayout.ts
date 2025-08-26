@@ -7,18 +7,18 @@ export function allocateVectorSpace(
     // Fixed spacing requirements (same as layout.ts but for 7 columns)
     const ELEMENT_SPACING = 1;           // 1px between elements
     const SYMBOL_WIDTH = 20;             // × symbol
-    const BRACKET_WIDTH = 10;            // Left and right brackets
+    const BRACKET_WIDTH =10;            // Left and right brackets
     const BRACKET_HEIGHT = totalHeight;  // Full height
     
     // Calculate total fixed space (6 brackets + 1 symbol + 6 spacing gaps)
-    const totalFixedWidth = (BRACKET_WIDTH * 6) + SYMBOL_WIDTH + (ELEMENT_SPACING * 6);
+    const totalFixedWidth = (BRACKET_WIDTH *6) + SYMBOL_WIDTH + (ELEMENT_SPACING * 6);
     const availableWidth = totalWidth - totalFixedWidth;
 
     // Vector dimensions (same logic as layout.ts)
     const [uRows, uCols] = dimU;  // [1, n] - row vector
     const [vRows, vCols] = dimV;  // [n, 1] - column vector
 
-    const totalColumns = uCols + vCols;  // n + 1
+    const totalColumns = uCols + vRows;  // n + 1
 
     // Vector sizes - PROPORTIONAL to their column count (same as layout.ts)
     const u_w = Math.floor((availableWidth * uCols) / totalColumns);  // n/(n+1) of space
