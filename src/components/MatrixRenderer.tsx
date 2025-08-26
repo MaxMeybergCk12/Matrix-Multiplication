@@ -23,7 +23,6 @@ const MatrixRenderer: React.FC<MatrixRendererProps> = ({
 }) => {
     const [rows, cols] = matrixData.dimensions;
 
-   
     // CSS Grid setup - this creates the actual grid structure
     const gridStyle = {
         display: 'grid',
@@ -90,4 +89,5 @@ const MatrixRenderer: React.FC<MatrixRendererProps> = ({
         </div>
     );
 };
+
 export default MatrixRenderer;

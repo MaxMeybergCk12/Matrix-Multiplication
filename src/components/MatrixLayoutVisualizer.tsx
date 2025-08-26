@@ -3,6 +3,7 @@ import { createMatrices } from "./matrixOrchestrator";
 import { allocateMatrixSpace } from "./layout";
 import Tester from "./tester";
 import BottomLeft from "./bottomLeft";
+import BottomRight from "./bottomRight/bottomRight";
 import { calculateStepInfo } from './stepCalculator';
 
 interface MatrixLayoutProps {
@@ -28,32 +29,32 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
         const initialMatrices = createMatrices(matrixA, matrixB);
         return initialMatrices;
     }, []); // Empty dependency array - only create once
-  
+    
   // Helper function - uses matrices from parent scope
-  const getVectors = (i: number, j: number) => {
-    const vectorU = matrices.matrixA.values[i];
-    const vectorV = matrices.matrixB.values.map(row => row[j]);
-    return { vectorU, vectorV };
-  };
+    const getVectors = (i: number, j: number) => {
+        const vectorU = matrices.matrixA.values[i];
+        const vectorV = matrices.matrixB.values.map(row => row[j]);
+        return { vectorU, vectorV };
+    };
 
   // Calculate positions
-  const { i, j, totalSteps } = calculateStepInfo(currentStep, matrices.matrixC);
-  
+    const { i, j, totalSteps } = calculateStepInfo(currentStep, matrices.matrixC);
 
-  // Get vectors
-  const { vectorU, vectorV } = getVectors(i, j);
-  console.log(vectorU);
-  console.log(vectorV);
+
+    // Get vectors
+    const { vectorU, vectorV } = getVectors(i, j);
+    console.log(vectorU);
+    console.log(vectorV);
 
 
   // Step 2: Calculate layout only when matrices change
-  const layout = useMemo(() => allocateMatrixSpace(
-      matrices.matrixA.dimensions,
-      matrices.matrixB.dimensions,
-      matrices.matrixC.dimensions,
-      totalWidth,
-      totalHeight,
-  ), [matrices, totalWidth, totalHeight]);
+    const layout = useMemo(() => allocateMatrixSpace(
+        matrices.matrixA.dimensions,
+        matrices.matrixB.dimensions,
+        matrices.matrixC.dimensions,
+        totalWidth,
+        totalHeight,
+    ), [matrices, totalWidth, totalHeight]);
 
     // here to stop type issues:  
     const cleanVectorU = vectorU.filter((val): val is number => val !== null);
@@ -86,10 +87,18 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
             />
             </div>
             {/* Right: Result display */}
-            <div style={{ width: totalWidth / 2, backgroundColor: 'lightgray' }}>
-                <div className="p-4 text-center">
-                    <p>Result for step {currentStep}</p>
-                </div>
+            <div style={{ width: totalWidth / 2 }}>
+                <BottomRight 
+                    vectorU={cleanVectorU}
+                    vectorV={cleanVectorV}
+                    matrixC={matrices.matrixC}
+                    currentStep={currentStep}
+                    onMatrixCUpdate={(updatedMatrixC) => {
+                        // Update the matrices state with the new Matrix C
+                        // This would need to be handled at a higher level
+                        console.log('Matrix C updated:', updatedMatrixC);
+                    }}
+                />
             </div>
         </div>
     </div>
