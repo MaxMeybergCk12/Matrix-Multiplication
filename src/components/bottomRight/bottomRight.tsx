@@ -16,44 +16,60 @@ const BottomRight: React.FC<BottomRightProps> = ({
     currentStep,
     onMatrixCUpdate
 }) => {
-    const [dotProductResult, setDotProductResult] = useState<number | null>(null);
     const [currentAnimationStep, setCurrentAnimationStep] = useState(0);
 
-    const calculateDotProduct = () => {
-        let result = 0;
-        for (let i = 0; i < vectorU.length; i++) {
-            result += vectorU[i] * vectorV[i];
-        }
-        setDotProductResult(result);
-    };
-
-    // Simple effect that resets animation when step changes
+    // Show "?" immediately when step changes
     useEffect(() => {
         if (vectorU.length > 0 && vectorV.length > 0) {
-            setCurrentAnimationStep(0);
-            calculateDotProduct();
+            // Immediately show "?" in matrix C
+            showQuestionMark();
             
-            const totalSteps = vectorU.length * 6 + 2;
-            const timer = setInterval(() => {
-                setCurrentAnimationStep(prev => {
-                    if (prev >= totalSteps - 1) {
-                        clearInterval(timer);
-                        // Update matrix C immediately when animation completes
-                        updateMatrixC();
-                        return totalSteps - 1;
-                    }
-                    return prev + 1;
-                });
-            }, 600);
-
-            return () => clearInterval(timer);
+            // Then run the animation
+            setCurrentAnimationStep(0);
+            runAnimation();
         }
-    }, [currentStep]); // Only depend on currentStep changes
+    }, [currentStep]);
 
-    // Simple function to update matrix C
-    const updateMatrixC = () => {
+    const showQuestionMark = () => {
         if (onMatrixCUpdate) {
-            // Calculate result inline instead of relying on state
+            const rows = matrixC.dimensions[0];
+            const cols = matrixC.dimensions[1];
+            const currentRow = Math.floor((currentStep - 1) / cols);
+            const currentCol = (currentStep - 1) % cols;
+            
+            const updatedMatrixC = {
+                ...matrixC,
+                values: matrixC.values.map((row: any[], rowIndex: number) =>
+                    row.map((cell: any, colIndex: number) =>
+                        rowIndex === currentRow && colIndex === currentCol ? "?" : cell
+                    )
+                )
+            };
+            
+            onMatrixCUpdate(updatedMatrixC);
+        }
+    };
+
+    const runAnimation = () => {
+        const totalSteps = vectorU.length * 6 + 2;
+        const timer = setInterval(() => {
+            setCurrentAnimationStep(prev => {
+                if (prev >= totalSteps - 1) {
+                    clearInterval(timer);
+                    // Reveal the actual result at the end
+                    revealResult();
+                    return totalSteps - 1;
+                }
+                return prev + 1;
+            });
+        }, 600);
+
+        return () => clearInterval(timer);
+    };
+
+    const revealResult = () => {
+        if (onMatrixCUpdate) {
+            // Calculate the actual result
             let result = 0;
             for (let i = 0; i < vectorU.length; i++) {
                 result += vectorU[i] * vectorV[i];
@@ -257,7 +273,13 @@ const BottomRight: React.FC<BottomRightProps> = ({
                     animate={{ opacity: 1, scale: 1 }}
                     className="w-12 h-12 bg-green-300 border-2 border-green-500 flex items-center justify-center font-bold text-green-800 text-lg"
                 >
-                    {dotProductResult}
+                    {(() => {
+                        let result = 0;
+                        for (let i = 0; i < vectorU.length; i++) {
+                            result += vectorU[i] * vectorV[i];
+                        }
+                        return result;
+                    })()}
                 </motion.div>
             );
         }
