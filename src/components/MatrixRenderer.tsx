@@ -37,19 +37,33 @@ const MatrixRenderer: React.FC<MatrixRendererProps> = ({
         for (let col = 0; col < cols; col++) {
             const value = matrixData.values[row][col];
             
-            let cellClasses = 'bg-white border-gray-300 flex items-center justify-center text-sm font-bold';
+            let cellClasses = 'bg-white border-gray-300 flex items-center justify-center text-sm font-bold transition-all duration-300 ease-in-out';
             
             // Apply highlighting based on row and column selection
-            if (highlightedRow !== undefined && row === highlightedRow) {
-                // Highlighted row - yellow background
-                cellClasses = 'bg-yellow-200 border-yellow-400 flex items-center justify-center text-sm font-bold text-yellow-800';
+            if (highlightedRow !== undefined && highlightedColumn !== undefined && row === highlightedRow && col === highlightedColumn) {
+                // Intersection cell - green background for the result cell (Matrix C only)
+                if (matrixType === 'C') {
+                    cellClasses = 'bg-green-300 border-green-500 flex items-center justify-center text-sm font-bold text-green-800 transition-all duration-300 ease-in-out';
+                }
+            } else if (highlightedRow !== undefined && row === highlightedRow) {
+                // Highlighted row - yellow background (Matrix A only)
+                if (matrixType === 'A') {
+                    cellClasses = 'bg-yellow-200 border-yellow-400 flex items-center justify-center text-sm font-bold text-yellow-800 transition-all duration-300 ease-in-out';
+                }
             } else if (highlightedColumn !== undefined && col === highlightedColumn) {
-                // Highlighted column - blue background
-                cellClasses = 'bg-blue-200 border-blue-400 flex items-center justify-center text-sm font-bold text-blue-800';
+                // Highlighted column - blue background (Matrix B only)
+                if (matrixType === 'B') {
+                    cellClasses = 'bg-blue-200 border-blue-400 flex items-center justify-center text-sm font-bold text-blue-800 transition-all duration-300 ease-in-out';
+                }
             }
             
             if (matrixType === 'C' && value === null) {
-                cellClasses = 'bg-yellow-100 border-yellow-400 flex items-center justify-center text-sm font-bold text-yellow-800';
+                // For Matrix C empty cells, only show green for intersection, others stay default
+                if (highlightedRow !== undefined && highlightedColumn !== undefined && row === highlightedRow && col === highlightedColumn) {
+                    cellClasses = 'bg-green-300 border-green-500 flex items-center justify-center text-sm font-bold text-green-800 transition-all duration-300 ease-in-out';
+                } else {
+                    cellClasses = 'bg-yellow-100 border-yellow-400 flex items-center justify-center text-sm font-bold text-yellow-800 transition-all duration-300 ease-in-out';
+                }
             }
             
             cells.push(
