@@ -1,0 +1,1 @@
+THIS paret is heavily vibe coded when i needed to push this as fast as possible, its very sloppy so I just wanetd to warn you, it was more of needing to get it done
