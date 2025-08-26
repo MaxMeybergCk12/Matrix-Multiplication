@@ -36,7 +36,7 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
   // Calculate positions
   const numColumns = matrices.matrixB.dimensions[1];
   const i = Math.floor(currentStep / numColumns);
-  const j = currentStep % numColumns;
+  const j = (currentStep - 1) % numColumns;
 
   // Get vectors
   const { vectorU, vectorV } = getVectors(i, j);
