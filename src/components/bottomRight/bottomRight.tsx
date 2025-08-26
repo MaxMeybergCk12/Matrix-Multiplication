@@ -63,7 +63,7 @@ const BottomRight: React.FC<BottomRightProps> = ({
     // Start animation sequence
     useEffect(() => {
         if (showCalculation) {
-            const totalSteps = vectorU.length * 4 + 2; // Each pair: 4 elements + final result
+            const totalSteps = vectorU.length * 6 + 2; // Each pair: 4 elements + final result
             
             const timer = setInterval(() => {
                 setCurrentAnimationStep(prev => {
