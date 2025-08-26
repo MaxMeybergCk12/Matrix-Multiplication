@@ -43,7 +43,7 @@ export function allocateVectorSpace(
             cellHeight: v_h / vRows
         },
         symbol: { width: SYMBOL_WIDTH },
-        brackets: { width: BRACKET_WIDTH, height: BRACKET_HEIGHT },
+        brackets: { width: 1, height: BRACKET_HEIGHT },
         spacing: { elementGap: ELEMENT_SPACING, totalFixedWidth, availableWidth }
     };
 }
