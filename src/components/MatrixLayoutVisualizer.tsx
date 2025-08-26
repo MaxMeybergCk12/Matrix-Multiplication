@@ -22,10 +22,13 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
 }) => {
   
 
-  
-  // Step 1: Generate matrices only when dimensions change
-  const matrices = useMemo(() => createMatrices(matrixA, matrixB), [matrixA, matrixB]);
 
+    // Step 1: Generate matrices only when dimensions change
+    const matrices = useMemo(() => {
+        const initialMatrices = createMatrices(matrixA, matrixB);
+        return initialMatrices;
+    }, []); // Empty dependency array - only create once
+  
   // Helper function - uses matrices from parent scope
   const getVectors = (i: number, j: number) => {
     const vectorU = matrices.matrixA.values[i];
