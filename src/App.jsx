@@ -59,18 +59,15 @@ function App() {
             {/* 🟢 HEY CURSUR! VIBE CODE INSIDE THIS AREA BELOW! */}
             {/* ================================================= */}
 
-            {current_step === 1 && (
-                
-
-                // Then somewhere in your JSX:
-                <MatrixLayoutVisualizer
-                    matrixA={[1, 3]}
-                    matrixB={[3, 2]}
-                    totalWidth={484}
-                    totalHeight={404}
-                    currentStep={current_step}
-                />
-            )}
+  
+            <MatrixLayoutVisualizer
+                matrixA={[1, 3]}
+                matrixB={[3, 2]}
+                totalWidth={484}
+                totalHeight={404}
+                currentStep={current_step}
+            />
+        
 
             {/* ================================================= */}
             {/* 🟢 HEY CURSUR! VIBE CODE INSIDE THIS AREA ABOVE! */}

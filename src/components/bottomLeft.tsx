@@ -17,13 +17,12 @@ const BottomLeft: React.FC<BottomLeftProps> = ({
 }) => {
 
     // Use vecLayout.ts for consistent spacing and layout
-    const vectorLayout = useMemo(() => allocateVectorSpace(
+    const vectorLayout = allocateVectorSpace(
         [1, vectorU.length],    // U as row vector [1, n]
         [vectorV.length, 1],    // V as column vector [n, 1]
         totalWidth,
         totalHeight
-    ), [vectorU.length, vectorV.length, totalWidth, totalHeight]);
-
+    );
     console.log('Vector Layout:', vectorLayout);
     console.log('Vector U dimensions:', [1, vectorU.length]);
     console.log('Vector V dimensions:', [vectorV.length, 1]);
