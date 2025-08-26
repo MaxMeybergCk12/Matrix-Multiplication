@@ -27,12 +27,16 @@ const BottomLeft: React.FC<BottomLeftProps> = ({
     console.log('Vector Layout:', vectorLayout);
     console.log('Vector U dimensions:', [1, vectorU.length]);
     console.log('Vector V dimensions:', [vectorV.length, 1]);
+
     return (
         <div className="relative border-2 border-gray-400 bg-gray-100" style={{ width: totalWidth, height: totalHeight }}>
             <div className="grid items-center" style={{
-                gridTemplateColumns: `10px 1fr 10px 20px 10px 1fr 10px`
-                
-            }}>
+                    display: 'grid',
+                    gridTemplateColumns: `10px ${vectorLayout.vectorU.width}px 10px 20px 10px ${vectorLayout.vectorV.width}px 10px`,
+                    alignItems: 'center',
+                    gap: '0', // Remove any gaps
+                    overflow: 'hidden' // Prevent overflow
+                }}>
                 {/* Column 1: Left Bracket U */}
                 <div className="matrix-bracket" style={{ height: vectorLayout.vectorU.height }}>[</div>
     
