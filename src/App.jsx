@@ -59,14 +59,18 @@ function App() {
             {/* 🟢 HEY CURSUR! VIBE CODE INSIDE THIS AREA BELOW! */}
             {/* ================================================= */}
 
+            {/*TODO: Random numebr generator for # of steps a = 1-3, b  1-3, c = 1-3, then from there its [a,b] and [b,c*/}
   
             <MatrixLayoutVisualizer
                 matrixA={[2, 1]}
-                matrixB={[1, 2]}
+                matrixB={[2, 3]}
                 totalWidth={484}
                 totalHeight={404}
                 currentStep={current_step}
             />
+             {/*TODO:inside matrix visualizer make a final step to go t omake a new one*/}
+
+             
         
 
             {/* ================================================= */}

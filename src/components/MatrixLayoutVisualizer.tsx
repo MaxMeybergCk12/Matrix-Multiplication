@@ -52,7 +52,9 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
       totalHeight,
   ), [matrices, totalWidth, totalHeight]);
 
-   
+    // here to stop type issues:  
+    const cleanVectorU = vectorU.filter((val): val is number => val !== null);
+    const cleanVectorV = vectorV.filter((val): val is number => val !== null);
 
   // Step 3: Call Tester
   return (
@@ -67,8 +69,8 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
             {/* Left: Vector multiplication */}
             <div style={{ width: totalWidth / 2 }}>
             <BottomLeft 
-                vectorU={vectorU}               // ✅ The extracted row vector
-                vectorV={vectorV}               // ✅ The extracted column vector
+                vectorU={cleanVectorU}               // ✅ The extracted row vector
+                vectorV={cleanVectorV}               // ✅ The extracted column vector
                 totalWidth={totalWidth / 2}     // ✅ Layout width
                 totalHeight={totalHeight / 2}   // ✅ Layout height
             />
