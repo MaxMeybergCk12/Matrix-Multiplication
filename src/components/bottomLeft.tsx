@@ -32,7 +32,7 @@ const BottomLeft: React.FC<BottomLeftProps> = ({
     console.log('Vector V dimensions:', [vectorV.length, 1]);
 
     return (
-        <div className="relative border-2 border-gray-400 bg-gray-100" style={{ width: totalWidth, height: totalHeight }}>
+        <div className="relative border-2 border-gray-400 bg-gray-100 flex items-center justify-center" style={{ width: totalWidth, height: totalHeight }}>
             <div className="grid items-center" style={{
                     display: 'grid',
                     gridTemplateColumns: `10px ${vectorLayout.vectorU.width}px 10px 20px 10px ${vectorLayout.vectorV.width}px 10px`,
