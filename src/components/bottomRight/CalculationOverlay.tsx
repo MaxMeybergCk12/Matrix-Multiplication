@@ -14,20 +14,21 @@ const CalculationOverlay: React.FC<CalculationOverlayProps> = ({
 }) => {
     return (
         <div className="relative w-full h-full">
-            {/* Red Overlay */}
+            {/* White Overlay */}
             <AnimatePresence>
                 {isVisible && (
                     <motion.div
                         initial={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="absolute inset-0 bg-red-500 flex items-center justify-center cursor-pointer z-10"
-                        onClick={onReveal}
+                        className="absolute inset-0 bg-white flex items-center justify-center z-10"
                     >
-                        <div className="text-white text-center">
-                            <div className="text-4xl font-bold mb-4">?</div>
-                            <div className="text-lg">Click to reveal calculation</div>
-                        </div>
+                        <button
+                            onClick={onReveal}
+                            className="px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-bold text-lg rounded-lg shadow-lg transition-all duration-200 hover:shadow-xl transform hover:scale-105"
+                        >
+                            Click to calculate
+                        </button>
                     </motion.div>
                 )}
             </AnimatePresence>
