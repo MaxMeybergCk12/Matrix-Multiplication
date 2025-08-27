@@ -78,7 +78,10 @@ const BottomRight: React.FC<BottomRightProps> = ({
     }, [vectorU.length, vectorV.length, startAnimation]);
 
     return (
-        <div className="p-4 flex flex-col items-center justify-center h-full" style={{ width: totalWidth, height: totalHeight }}>
+        <div 
+            className="p-2 flex flex-col items-center justify-center h-full overflow-hidden" 
+            style={{ width: totalWidth, height: totalHeight }}
+        >
             {/* Start Button */}
             <StartButton 
                 onStart={handleStartCalculation}
@@ -88,7 +91,7 @@ const BottomRight: React.FC<BottomRightProps> = ({
             />
             
             {/* Calculation Display */}
-            <div className="mt-6">
+            <div className="mt-3 w-full flex justify-center">
                 <CalculationDisplay
                     vectorU={vectorU}
                     vectorV={vectorV}

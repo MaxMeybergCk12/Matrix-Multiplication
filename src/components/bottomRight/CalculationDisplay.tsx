@@ -44,7 +44,7 @@ const CalculationDisplay: React.FC<CalculationDisplayProps> = ({
             }
         }
 
-        // Final equals and result
+        // Final equals and result - keep inline
         if (currentAnimationStep >= elementIndex++) {
             elements.push(
                 <motion.span
@@ -64,7 +64,7 @@ const CalculationDisplay: React.FC<CalculationDisplayProps> = ({
                     key="final-result"
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="w-12 h-12 bg-green-300 border-2 border-green-500 flex items-center justify-center font-bold text-green-800 text-lg"
+                    className="w-10 h-10 bg-green-300 border-2 border-green-500 flex items-center justify-center font-bold text-green-800 text-lg"
                 >
                     {dotProductResult}
                 </motion.div>
@@ -80,14 +80,14 @@ const CalculationDisplay: React.FC<CalculationDisplayProps> = ({
         // u value
         if (currentAnimationStep >= startIndex++) {
             elements.push(
-                <motion.div
-                    key={`u-${index}`}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="w-10 h-10 bg-yellow-200 border-2 border-yellow-400 flex items-center justify-center font-bold text-yellow-800"
-                >
-                    {vectorU[index]}
-                </motion.div>
+                                        <motion.div
+                            key={`u-${index}`}
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="w-8 h-8 bg-yellow-200 border-2 border-yellow-400 flex items-center justify-center font-bold text-yellow-800 text-sm"
+                        >
+                            {vectorU[index]}
+                        </motion.div>
             );
         }
         
@@ -151,7 +151,7 @@ const CalculationDisplay: React.FC<CalculationDisplayProps> = ({
     };
 
     return (
-        <div className="flex items-center gap-2 flex-wrap justify-center">
+        <div className="flex items-center gap-2 flex-wrap justify-center max-w-full overflow-hidden">
             {renderCalculationSteps()}
         </div>
     );
