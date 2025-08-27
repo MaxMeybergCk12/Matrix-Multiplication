@@ -57,7 +57,7 @@ const BottomLeft: React.FC<BottomLeftProps> = ({
                 <div className="matrix-bracket" style={{ height: vectorLayout.vectorU.height }}>]</div>
     
                 {/* Column 4: × Symbol */}
-                <div className="bg-green-200 border-2 border-green-500 flex items-center justify-center text-lg font-bold">×</div>
+                <div className="bg-gray-100 flex items-center justify-center text-lg font-bold text-gray-600">×</div>
     
                 {/* Column 5: Left Bracket V */}
                 <div className="matrix-bracket" style={{ height: vectorLayout.vectorV.height }}>[</div>

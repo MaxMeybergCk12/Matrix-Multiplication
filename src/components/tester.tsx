@@ -49,7 +49,7 @@ const Tester: React.FC<TesterProps> = ({ layout, matrices, highlightedRow, highl
                 <div className="matrix-bracket" style={{ height: layout.matrixA.height }}>]</div>
 
                 {/* Column 4: × Symbol */}
-                <div className="bg-green-200 border-2 border-green-500 flex items-center justify-center text-lg font-bold" style={{ height: 40 }}>×</div>
+                <div className="bg-gray-100 flex items-center justify-center text-lg font-bold text-gray-600" style={{ height: 40 }}>×</div>
 
                 {/* Column 5: Left Bracket B */}
                 <div className="matrix-bracket" style={{ height: layout.matrixB.height }}>[</div>
@@ -69,7 +69,7 @@ const Tester: React.FC<TesterProps> = ({ layout, matrices, highlightedRow, highl
                 <div className="matrix-bracket" style={{ height: layout.matrixB.height }}>]</div>
 
                 {/* Column 8: = Symbol */}
-                <div className="bg-orange-200 border-2 border-orange-500 flex items-center justify-center text-lg font-bold" style={{ height: 40 }}>=</div>
+                <div className="bg-gray-100 flex items-center justify-center text-lg font-bold text-gray-600" style={{ height: 40 }}>=</div>
 
                 {/* Column 9: Left Bracket C */}
                 <div className="matrix-bracket" style={{ height: layout.matrixC.height }}>[</div>
