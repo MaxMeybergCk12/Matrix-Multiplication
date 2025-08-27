@@ -93,6 +93,8 @@ const MatrixLayoutVisualizer: React.FC<MatrixLayoutProps> = ({
                     vectorV={cleanVectorV}
                     matrixC={matrices.matrixC}
                     currentStep={currentStep}
+                    totalWidth={totalWidth / 2}
+                    totalHeight={totalHeight / 2}
                     onMatrixCUpdate={handleMatrixCUpdate}
                 />
             </div>
