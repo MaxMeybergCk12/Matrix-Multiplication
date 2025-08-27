@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useAnimationController } from './AnimationController';
 import { calculateDotProduct, getMatrixPosition, createUpdatedMatrixC } from './DotProductCalculator';
 import CalculationDisplay from './CalculationDisplay';
-import StartButton from './StartButton';
+import CalculationOverlay from './CalculationOverlay';
 
 interface BottomRightProps {
     vectorU: number[];
@@ -24,7 +24,7 @@ const BottomRight: React.FC<BottomRightProps> = ({
     onMatrixCUpdate
 }) => {
     const [dotProductResult, setDotProductResult] = useState<number | null>(null);
-    const [isButtonVisible, setIsButtonVisible] = useState(true);
+    const [isOverlayVisible, setIsOverlayVisible] = useState(true);
     
     // Function declarations first - using useCallback to avoid dependency issues
     const handleAnimationComplete = React.useCallback(() => {
@@ -57,7 +57,7 @@ const BottomRight: React.FC<BottomRightProps> = ({
         if (vectorU.length > 0 && vectorV.length > 0) {
             showQuestionMark();
             resetAnimation();
-            setIsButtonVisible(true); // Show button again for new step
+            setIsOverlayVisible(true); // Show overlay again for new step
         }
     }, [currentStep]);
 
@@ -69,10 +69,10 @@ const BottomRight: React.FC<BottomRightProps> = ({
         }
     };
 
-    // Update handleStartCalculation to use startAnimation and hide button
-    const handleStartCalculation = useCallback(() => {
+    // Handle overlay reveal to start animation
+    const handleOverlayReveal = useCallback(() => {
         if (vectorU.length > 0 && vectorV.length > 0) {
-            setIsButtonVisible(false); // Hide the button when clicked
+            setIsOverlayVisible(false); // Hide the overlay when clicked
             startAnimation();
         }
     }, [vectorU.length, vectorV.length, startAnimation]);
@@ -82,22 +82,19 @@ const BottomRight: React.FC<BottomRightProps> = ({
             className="p-2 flex flex-col items-center justify-center h-full overflow-hidden" 
             style={{ width: totalWidth, height: totalHeight }}
         >
-            {/* Start Button */}
-            <StartButton 
-                onStart={handleStartCalculation}
-                isAnimating={isAnimating}
-                disabled={vectorU.length === 0 || vectorV.length === 0}
-                isVisible={isButtonVisible}
-            />
-            
-            {/* Calculation Display */}
-            <div className="mt-3 w-full flex justify-center">
-                <CalculationDisplay
-                    vectorU={vectorU}
-                    vectorV={vectorV}
-                    currentAnimationStep={currentAnimationStep}
-                    dotProductResult={dotProductResult || 0}
-                />
+            {/* Calculation Display with Overlay */}
+            <div className="w-full h-full">
+                <CalculationOverlay
+                    isVisible={isOverlayVisible}
+                    onReveal={handleOverlayReveal}
+                >
+                    <CalculationDisplay
+                        vectorU={vectorU}
+                        vectorV={vectorV}
+                        currentAnimationStep={currentAnimationStep}
+                        dotProductResult={dotProductResult || 0}
+                    />
+                </CalculationOverlay>
             </div>
         </div>
     );
