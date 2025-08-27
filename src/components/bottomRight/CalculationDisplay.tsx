@@ -84,7 +84,7 @@ const CalculationDisplay: React.FC<CalculationDisplayProps> = ({
                             key={`u-${index}`}
                             initial={{ opacity: 0, scale: 0.5 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="w-8 h-8 bg-yellow-200 border-2 border-yellow-400 flex items-center justify-center font-bold text-yellow-800 text-sm"
+                            className="w-10 h-10 bg-yellow-200 border-2 border-yellow-400 flex items-center justify-center font-bold text-yellow-800"
                         >
                             {vectorU[index]}
                         </motion.div>
@@ -108,14 +108,14 @@ const CalculationDisplay: React.FC<CalculationDisplayProps> = ({
         // v value
         if (currentAnimationStep >= startIndex++) {
             elements.push(
-                <motion.div
-                    key={`v-${index}`}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="w-10 h-10 bg-blue-200 border-2 border-blue-400 flex items-center justify-center font-bold text-blue-800"
-                >
-                    {vectorV[index]}
-                </motion.div>
+                                        <motion.div
+                            key={`v-${index}`}
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="w-10 h-10 bg-blue-200 border-2 border-blue-400 flex items-center justify-center font-bold text-blue-800"
+                        >
+                            {vectorV[index]}
+                        </motion.div>
             );
         }
         
@@ -136,14 +136,14 @@ const CalculationDisplay: React.FC<CalculationDisplayProps> = ({
         // result
         if (currentAnimationStep >= startIndex++) {
             elements.push(
-                <motion.div
-                    key={`result-${index}`}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="w-10 h-10 bg-green-200 border-2 border-green-400 flex items-center justify-center font-bold text-green-800"
-                >
-                    {product}
-                </motion.div>
+                                        <motion.div
+                            key={`result-${index}`}
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="w-10 h-10 bg-green-200 border-2 border-green-400 flex items-center justify-center font-bold text-green-800"
+                        >
+                            {product}
+                        </motion.div>
             );
         }
         
